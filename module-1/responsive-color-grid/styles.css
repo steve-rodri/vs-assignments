@@ -1,0 +1,58 @@
+body {
+  font-size: 0px;
+}
+
+div {
+  box-sizing: border-box;
+  border: 2px solid #ffffff;
+  height: 200px;
+}
+
+.lightpink {
+  background-color: #f5c6d6;
+}
+
+.magenta {
+  background-color: #ee2e84;
+}
+
+.cyan {
+  background-color: #85cfd8;
+}
+
+.green {
+  background-color: #8dc63f;
+}
+
+.orange {
+  background-color: #e76e34;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    padding: 100px;
+  }
+
+  div {
+    border-width: 10px;
+    display: inline-block;
+    height: 300px;
+    width: 100%;
+  }
+
+  .magenta {
+    width: 25%;
+  }
+
+  .cyan {
+    width: 50%;
+  }
+
+  .green {
+    width: 74%;
+  }
+
+  .orange {
+    width: 26%;
+  }
+}

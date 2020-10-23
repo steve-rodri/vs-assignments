@@ -1,0 +1,155 @@
+body {
+  background-color: #222;
+}
+
+main {
+  display: grid;
+  gap: 10px;
+}
+
+.flag {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.France {
+  height: 200px;
+  width: 300px;
+}
+.France > div:nth-child(1) {
+  background-color: #002495;
+}
+.France > div:nth-child(2) {
+  background-color: #ffffff;
+}
+.France > div:nth-child(3) {
+  background-color: #ed2938;
+}
+
+.Germany {
+  height: 300px;
+  width: 500px;
+}
+.Germany > div:nth-child(1) {
+  background-color: #000000;
+}
+.Germany > div:nth-child(2) {
+  background-color: #de0002;
+}
+.Germany > div:nth-child(3) {
+  background-color: #ffce00;
+}
+
+.Madagascar {
+  height: 200px;
+  width: 300px;
+}
+.Madagascar > div:nth-child(1) {
+  background-color: #ffffff;
+}
+.Madagascar > div:nth-child(2) {
+  background-color: #fc3e32;
+}
+.Madagascar > div:nth-child(3) {
+  background-color: #007e39;
+}
+
+.Switzerland {
+  height: 100px;
+  width: 100px;
+}
+.Switzerland > div:nth-child(1) {
+  background-color: #ffffff;
+}
+.Switzerland > div:nth-child(2) {
+  background-color: #ff0002;
+}
+
+.Sweden {
+  height: 500px;
+  width: 800px;
+}
+.Sweden > div:nth-child(1) {
+  background-color: #0269a6;
+}
+.Sweden > div:nth-child(2) {
+  background-color: #fecc00;
+}
+
+.Gambia {
+  height: 200px;
+  width: 300px;
+}
+.Gambia > div:nth-child(1) {
+  background-color: #ce1127;
+}
+.Gambia > div:nth-child(2) {
+  background-color: #ffffff;
+}
+.Gambia > div:nth-child(3) {
+  background-color: #0d1d8b;
+}
+.Gambia > div:nth-child(4) {
+  background-color: #3b7827;
+}
+
+.Japan {
+  height: 200px;
+  width: 300px;
+}
+.Japan > div:nth-child(1) {
+  background-color: #ffffff;
+}
+.Japan > div:nth-child(2) {
+  background-color: #bc022c;
+}
+
+.Niger {
+  height: 600px;
+  width: 700px;
+}
+.Niger > div:nth-child(1) {
+  background-color: #e15307;
+}
+.Niger > div:nth-child(2) {
+  background-color: #ffffff;
+}
+.Niger > div:nth-child(3) {
+  background-color: #10af2a;
+}
+
+.Tonga {
+  height: 100px;
+  width: 200px;
+}
+.Tonga > div:nth-child(1) {
+  background-color: #c20002;
+}
+.Tonga > div:nth-child(2) {
+  background-color: #ffffff;
+}
+
+.Greece {
+  height: 200px;
+  width: 300px;
+}
+.Greece > div:nth-child(1) {
+  background-color: #ffffff;
+}
+.Greece > div:nth-child(2) {
+  background-color: #0e5fae;
+}
+
+.Maldives {
+  height: 200px;
+  width: 300px;
+}
+.Maldives > div:nth-child(1) {
+  background-color: #d31133;
+}
+.Maldives > div:nth-child(2) {
+  background-color: #007e39;
+}
+.Maldives > div:nth-child(3) {
+  background-color: #ffffff;
+}

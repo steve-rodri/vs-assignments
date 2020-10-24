@@ -1,0 +1,15 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+}
+
+#box {
+  height: 50vh;
+  width: 50vh;
+  background-color: black;
+  border-radius: 15px;
+  box-shadow: 0 5px 5px 0 #555;
+}

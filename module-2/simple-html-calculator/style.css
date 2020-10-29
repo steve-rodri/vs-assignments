@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 0 15px;
+  color: #f7f7f7;
+  font-size: 25px;
+  font-family: sans-serif;
+  background: linear-gradient(335deg, red, blue);
+}
+
+.operation {
+  margin: 15px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 15px;
+  min-width: 225px;
+  max-width: 505px;
+}
+
+form {
+  margin: 15px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.first,
+.second,
+.result {
+  position: relative;
+  margin: 0 25px 15px;
+}
+
+form > button {
+  margin: 15px 0 0 0;
+  transition: background-color 50ms ease-in-out;
+}
+
+.symbol {
+  position: absolute;
+  width: 20px;
+  top: 50%;
+  margin-top: -17.5px;
+  left: -35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input,
+.result-input {
+  background-color: #eee;
+  border: none;
+  width: 125px;
+  height: 50px;
+  padding: 35px 10px;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 25px;
+  font-family: sans-serif;
+  outline: none;
+}
+
+.result-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.result-input > p {
+  font-family: sans-serif;
+  color: white;
+  padding: 0 5px;
+}
+
+.symbol {
+  font-family: sans-serif;
+  font-size: 30px;
+}
+
+form > button {
+  font-size: 20px;
+  padding: 20px 0;
+  border: none;
+  border-radius: 15px;
+  background-color: dodgerblue;
+  color: white;
+  outline: none;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.clear-all {
+  display: none;
+}
+
+@media only screen and (min-width: 410px) {
+  .result {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (min-width: 535px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .operation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .first {
+    margin-left: 0;
+  }
+
+  .result {
+    margin-right: 0;
+    margin-top: 0;
+  }
+  input,
+  .result-input {
+    width: 125px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .clear-all {
+    display: initial;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 50px;
+    margin: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.5);
+    outline: none;
+    font-size: 18px;
+  }
+}

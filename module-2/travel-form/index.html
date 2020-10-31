@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Travel Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <form class="travel-form" name="travel-form">
+      <section class="destination">
+        <h3>Destination</h3>
+        <select name="location">
+          <option value="New York, NY">New York, NY</option>
+          <option value="Los Angeles, CA">Los Angeles, CA</option>
+          <option value="Miami, FL">Miami, FL</option>
+        </select>
+      </section>
+
+      <section class="name-and-age">
+        <h3>Name & Age</h3>
+        <div class="form-collection">
+          <label for="first-name">First Name</label>
+          <input name="first-name" id="first-name" type="text" value="" />
+          <label for="last-name">Last Name</label>
+          <input name="last-name" id="last-name" type="text" value="" />
+          <label for="age">Age</label>
+          <input name="age" id="age" type="number" min="18" max="200" />
+        </div>
+      </section>
+
+      <section class="gender">
+        <h3>Gender</h3>
+        <div class="form-box-collection">
+          <input type="radio" name="gender" id="male" value="Male" />
+          <label for="male">Male</label>
+          <input type="radio" name="gender" id="female" value="Female" />
+          <label for="female">Female</label>
+        </div>
+      </section>
+
+      <section class="preferences">
+        <h3>Dietary Preferences</h3>
+        <div class="form-box-collection">
+          <input
+            type="checkbox"
+            name="diet-preferences"
+            id="vegan"
+            value="Vegan"
+          />
+          <label for="vegan">Vegan</label>
+          <input
+            type="checkbox"
+            name="diet-preferences"
+            id="vegetarian"
+            value="Vegetarian"
+          />
+          <label for="vegetarian">Vegetarian</label>
+          <input
+            type="checkbox"
+            name="diet-preferences"
+            id="kosher"
+            value="Kosher"
+          />
+          <label for="kosher">Kosher</label>
+        </div>
+      </section>
+
+      <div class="button-container">
+        <button id="submit-button">SUBMIT</button>
+      </div>
+    </form>
+  </body>
+</html>

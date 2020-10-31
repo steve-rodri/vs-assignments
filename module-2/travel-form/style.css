@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, orange, blue);
+  color: #f7f7f7;
+}
+
+form {
+  padding: 30px 15px 15px;
+}
+
+h3 {
+  font-size: 24px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 15px;
+  width: 50%;
+  cursor: default;
+}
+
+label {
+  font-size: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+button {
+  height: 70px;
+  font-size: 24px;
+  padding: 15px;
+  width: 100%;
+  outline: none;
+  border-radius: 15px;
+}
+
+button {
+  border: none;
+  background-color: dodgerblue;
+  color: #f7f7f7;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid transparent;
+  color: black;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: dodgerblue;
+  box-shadow: 0 0 5px 1px dodgerblue;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  width: 33%;
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: solid 2px #ccc;
+  margin: 5px;
+  margin-left: 0;
+  position: relative;
+  outline: none;
+}
+
+input[type="radio"]:checked::before,
+input[type="checkbox"]:checked::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-color: black;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+input[type="radio"],
+input[type="radio"]:checked::before {
+  border-radius: 100%;
+}
+
+select,
+.form-collection,
+.form-box-collection {
+  margin: 30px 0 60px;
+}
+
+.form-collection,
+.form-box-collection {
+  display: grid;
+  gap: 15px;
+}
+
+.form-box-collection {
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  justify-content: start;
+}
+
+@media only screen and (min-width: 425px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form {
+    width: 350px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  h3 {
+    width: 100%;
+  }
+
+  form {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 0 60px;
+  }
+
+  section {
+    width: 350px;
+  }
+
+  .name-and-age {
+    grid-row: 2;
+  }
+
+  .button-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    width: 350px;
+  }
+
+  select,
+  .form-collection,
+  .form-box-collection {
+    margin: 30px 0 30px;
+  }
+}

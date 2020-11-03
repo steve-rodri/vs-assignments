@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #222;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  gap: 50px;
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  body {
+    grid-template-columns: repeat(3, auto);
+    gap: 75px;
+  }
+}
+
+.box {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 5px black;
+  position: relative;
+}
+
+.box:hover {
+  height: 500px;
+  width: 500px;
+  top: 100px;
+  border-radius: 25%;
+  z-index: 1;
+}
+
+.box:nth-of-type(1) {
+  transition: background-color 500ms ease-in, border-radius 5s ease-out,
+    height 1s linear, width 4s linear, transform 45s ease-in-out,
+    border 10s ease-in-out;
+}
+.box:nth-of-type(1):hover {
+  background-color: blue;
+  border: 250px groove red;
+  border-radius: 50%;
+  transform: rotateZ(-360deg);
+}
+
+.box:nth-of-type(2) {
+  transition: background-color 1s ease-in, border-radius 2s ease-in,
+    height 250ms ease-out, width 250ms linear, transform 30s ease-in-out,
+    border 10s ease-in-out;
+}
+.box:nth-of-type(2):hover {
+  background-color: darkblue;
+  border: 250px dotted white;
+  transform: rotateZ(360deg) rotateX(180deg) scale(2);
+}
+
+.box:nth-of-type(3) {
+  transition: background-color 500ms ease-in, border-radius 500ms ease-out,
+    height 250ms linear, width 250ms linear, transform 30s linear,
+    border 5s ease-in-out;
+}
+.box:nth-of-type(3):hover {
+  background-color: orange;
+  border: 250px inset orangered;
+  transform: rotateZ(-360deg);
+}
+
+.box:nth-of-type(4) {
+  transition: background-color 500ms ease-in, border-radius 500ms ease-out,
+    height 250ms linear, width 250ms linear, transform 30s linear,
+    border 5s ease-in-out;
+}
+.box:nth-of-type(4):hover {
+  background-color: green;
+  border: 250px groove limegreen;
+  transform: rotateZ(360deg);
+}
+
+.box:nth-of-type(5) {
+  transition: background-color 500ms ease-in, border-radius 500ms ease-out,
+    height 250ms linear, width 250ms linear, transform 30s linear,
+    border 5s ease-in-out;
+}
+.box:nth-of-type(5):hover {
+  background-color: darkred;
+  border: 125px double red;
+  transform: rotateZ(360deg);
+}
+
+.box:nth-of-type(6) {
+  transition: background-color 500ms ease-in, border-radius 500ms ease-out,
+    height 250ms linear, width 250ms linear, transform 30s linear,
+    border 30s ease-in-out;
+}
+.box:nth-of-type(6):hover {
+  background-color: black;
+  border: 250px dotted white;
+  transform: rotateZ(360deg) rotateY(180deg) scale(3);
+}

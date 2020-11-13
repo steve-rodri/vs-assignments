@@ -25,7 +25,7 @@ function parseSentence({ location, duration }) {
 console.log(parseSentence(vacation));
 
 function returnFirst(items) {
-  const [firstItem, ...rest] = items; /*change this line to be es6*/
+  const [firstItem] = items; /*change this line to be es6*/
   return firstItem;
 }
 const favoriteActivities = [
@@ -45,6 +45,7 @@ console.log(returnFavorites(favoriteActivities));
 const realAnimals = ["dog", "cat", "mouse"];
 const magicalAnimals = ["jackolope"];
 const mysteriousAnimals = ["platypus"];
+
 function combineAnimals(...animals) {
   return animals.flat();
 }

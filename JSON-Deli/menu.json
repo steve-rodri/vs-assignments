@@ -1,0 +1,144 @@
+{
+  "appetizers": [
+    {
+      "name": "Mexican Corn Cakes",
+      "ingredients": [
+        "corn cakes",
+        "cherry tomatoes",
+        "grilled corn",
+        "lime",
+        "chili",
+        "queso"
+      ],
+      "description": "Mexican Corn Cakes"
+    },
+    {
+      "name": "Beet Poke",
+      "ingredients": [
+        "macadamia",
+        "baby cucumbers",
+        "ponzu",
+        "seaweed",
+        "garlic crackers"
+      ],
+      "description": "Beet Poke"
+    },
+    {
+      "name": "Belga Fries",
+      "ingredients": [
+        "potato fries",
+        "herb aioli",
+        "chipotle aioli",
+        "curry ketchup"
+      ],
+      "description": "Belga Fries"
+    },
+    {
+      "name": "Mezze Plate",
+      "ingredients": [
+        "green falafel",
+        "smoked white bean hummus",
+        "baba ghanoush",
+        "cucumber",
+        "marinated feta",
+        "pomegranate-tomato",
+        "parsely tabouli",
+        "seeded flatbread"
+      ],
+      "description": "Mezze Plate"
+    }
+  ],
+  "coldSandwiches": [
+    {
+      "name": "BLT",
+      "ingredients": [
+        "sourdough bread",
+        "lettuce",
+        "tomato",
+        "crispy Bac*n strips",
+        "garlic mayo"
+      ],
+      "description": "Our homemade crispy Bac*n Strips served with lettuce, tomato and garlic mayo on sliced sourdough."
+    },
+    {
+      "name": "Club",
+      "ingredients": [
+        "Roast Chick*n Pieces",
+        "crispy Bac*n strips",
+        "lettuce",
+        "tomato",
+        "garlic mayo",
+        "sourdough bread"
+      ],
+      "description": "Our Roast Chick*n Pieces and cripsy Bac*n Strips served with lettuce, tomato and garlic mayo on slice sourdough."
+    },
+    {
+      "name": "Chick*n & Stuffing",
+      "ingredients": [
+        "Roast Chick*n Pieces",
+        "stuffing",
+        "lettuce",
+        "garlic mayo",
+        "sourdough bread"
+      ],
+      "description": "Our Roast Chick*n Pieces and stuffing served with crispy iceberg lettuce and garlic mayo on sliced sourdough."
+    }
+  ],
+  "hotSandwiches": [
+    {
+      "name": "Bac*n & Cheeze",
+      "ingredients": ["crispy Bac*n strips", "cheeze", "mustard"],
+      "description": "Our homemade Bac*n Strips toasted with our delicious Cheeze and American mustard."
+    },
+    {
+      "name": "Reuben",
+      "ingredients": [
+        "sourdough bread",
+        "Pastr*mi",
+        "sauerkraut",
+        "cheeze",
+        "russian dressing"
+      ],
+      "description": "Sliced sourdough with Pastr*mi, sauerkraut, melted cheeze and Russian dressing."
+    },
+    {
+      "name": "Pesto, Chick*n & Cheeze",
+      "ingredients": ["Roast Chick*n Pieces", "cheeze", "pesto"],
+      "description": "Our Roast Chick*n Pieces toasted with our delicious Cheeze and vegan pesto."
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Hot Cocoa!",
+      "ingredients": ["chocolate cake", "roasted marshmallow", "whipped cream"],
+      "description": "Chocolate cake with a swirl of whipped topping and a roasted marshmallow on top. Tastes like comfort!"
+    },
+    {
+      "name": "NannyCakes!",
+      "ingredients": ["chocolate", "banana", "strawberry"],
+      "description": "Chocolate on the bottom, banana cake center, and topped with strawberry flavored frosting"
+    },
+    {
+      "name": "Cinnamon Swirl",
+      "ingredients": ["vanilla", "cinnamon", "frosting"],
+      "description": "Golden vanilla cupcake with a swirl of sugary cinnamon throughout the batter and topped with a cinnamon frosting"
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Hot Buttered Rum",
+      "ingredients": ["rum", "grated nutmeg"],
+      "description": "Perfect for winter, with hot buttered rum batter and topped with a hint of grated nutmeg"
+    },
+    {
+      "name": "Planter's Punch",
+      "ingredients": ["apple juice", "grape juice", "rum"],
+      "description": "Mixed with various fruit and fruit juices; a fruity umbrella drink"
+    },
+    {
+      "name": "Hurricane",
+      "ingredients": ["vodka", "lime juice", "passion fruit syrup"],
+      "description": "Classic New Orleans cocktail with lime juice and passion fruit syrup served on ice"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  background-color: #eee;
+  color: whitesmoke;
+}
+
+header {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(75, 100, 150);
+  font-family: monospace;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+main {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 290px);
+  gap: 15px;
+  padding: 45px 15px;
+}
+
+@media only screen and (min-width: 625px) {
+  header {
+    height: 100px;
+  }
+  header > h1 {
+    font-size: 3em;
+  }
+  main {
+    min-height: calc(100vh - 130px);
+    align-content: center;
+    gap: 30px;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  main {
+    min-height: calc(100vh - 200px);
+    grid-template-columns: repeat(auto-fit, 380px);
+    gap: 40px;
+  }
+}

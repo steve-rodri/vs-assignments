@@ -1,0 +1,56 @@
+.card {
+  position: relative;
+  box-sizing: border-box;
+  padding: 15px 30px 30px 15px;
+  border-radius: 15px;
+  width: 290px;
+  height: 200px;
+  font-family: sans-serif;
+  box-shadow: 0 8px 8px 0 #ddd;
+  box-shadow: 0 4px 4px 0 #ccc;
+  background: linear-gradient(
+    112.5deg,
+    rgba(200, 200, 220, 0.1),
+    rgba(200, 200, 220, 0.3)
+  );
+  color: #555566;
+}
+
+.card > h2 {
+  margin: 0;
+  color: #557588;
+}
+
+.card > ul {
+  margin: 15px 0;
+  padding-left: 2px;
+}
+
+.card > ul > li {
+  list-style-type: none;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.dollar-signs {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 15px;
+  color: darkgoldenrod;
+}
+
+@media only screen and (min-width: 1250px) {
+  .card {
+    width: 380px;
+    height: 290px;
+  }
+
+  .card > h2 {
+    font-size: 2em;
+  }
+
+  .card > ul > li {
+    font-size: 22px;
+  }
+}

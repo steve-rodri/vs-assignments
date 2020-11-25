@@ -1,0 +1,181 @@
+header {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../assets/home-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  transition: height 200ms ease-out;
+  height: 475px;
+}
+
+header > nav {
+  background-color: #fff;
+  transition: background-color 200ms ease-out;
+  padding: 8px 16px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+header > nav > main {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 540px;
+  transition: all 200ms ease-out;
+}
+
+header > nav > main > h3 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+#dropdown-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  background-color: transparent;
+  border: 1px solid rgba(127, 127, 127, 0.2);
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+#dropdown-button:hover {
+  cursor: pointer;
+}
+
+.menu > li {
+  list-style-type: none;
+  margin: 8px 0;
+}
+
+.menu > li:hover {
+  cursor: pointer;
+}
+
+.menu > li > button {
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  color: gray;
+  outline: none;
+  transition: color 300ms ease-out;
+}
+
+.menu > li > button:hover {
+  cursor: pointer;
+  color: #333;
+}
+
+.menu.dropdown {
+  transition: height 300ms cubic-bezier(0, 0.78, 0.81, 0.85);
+  height: 0px;
+  overflow: hidden;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.menu.dropdown.show {
+  height: 128px;
+}
+
+.menu.inline {
+  display: none;
+}
+
+.hero {
+  margin-top: 50px;
+  padding: 0 15px;
+}
+
+.hero > * {
+  text-align: center;
+  margin: 8px 0;
+  color: #eee;
+}
+
+.hero > h1 {
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.hero > p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    height: 535px;
+  }
+
+  header > nav > main,
+  .menu.dropdown {
+    max-width: 720px;
+  }
+
+  .hero {
+    margin-top: 0;
+  }
+
+  .hero > h1 {
+    font-size: 80px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  header > nav {
+    background-color: transparent;
+    color: #ddd;
+  }
+
+  header > nav > main {
+    max-width: 960px;
+    padding: 0 10px;
+  }
+
+  header > nav > main > h3 {
+    font-size: 20px;
+    padding-left: 20px;
+  }
+
+  .menu.inline {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .menu.inline > li {
+    font-weight: 900;
+    padding: 10px 20px;
+    margin: 0;
+  }
+
+  .menu.inline > li > button {
+    color: #ddd;
+  }
+
+  .menu.dropdown.show {
+    height: 0px;
+  }
+
+  #dropdown-button {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  header > nav > main {
+    max-width: 1140px;
+  }
+}

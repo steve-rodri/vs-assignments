@@ -1,0 +1,12 @@
+.Hamburger {
+  display: grid;
+  gap: 3px;
+  width: 12px;
+  margin-left: 4px;
+}
+
+.Hamburger > div {
+  height: 1px;
+  background-color: #222;
+  border-radius: 0.4px;
+}

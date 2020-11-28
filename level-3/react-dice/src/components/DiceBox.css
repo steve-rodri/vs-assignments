@@ -1,0 +1,36 @@
+.DiceBox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 75px);
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.DiceBox > div {
+  border: 1px solid gray;
+  border-radius: 10px;
+  height: 75px;
+  width: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+}
+
+#roll-button {
+  width: 255px;
+  margin: 25px auto;
+  padding: 25px 0;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: dodgerblue;
+  outline: none;
+}
+
+button:hover,
+.DiceBox > div:hover {
+  cursor: pointer;
+}

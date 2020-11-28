@@ -1,0 +1,55 @@
+.BadgeForm {
+  display: grid;
+  gap: 25px;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.BadgeForm > input {
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 35px;
+  padding: 0 5px;
+  outline: none;
+}
+
+.BadgeForm > textarea {
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 175px;
+  padding: 5px;
+  outline: none;
+}
+
+.BadgeForm > button {
+  height: 35px;
+  width: 125px;
+  justify-self: center;
+  text-transform: uppercase;
+  background-color: dodgerblue;
+  color: #eee;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+.BadgeForm > button:disabled {
+  background-color: gray;
+  color: #555;
+}
+
+@media only screen and (min-width: 768px) {
+  .BadgeForm {
+    width: 700px;
+    grid-template-columns: repeat(2, auto);
+    padding: 50px 75px;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+  }
+  .BadgeForm > textarea,
+  .BadgeForm > button {
+    grid-column: span 2;
+  }
+}

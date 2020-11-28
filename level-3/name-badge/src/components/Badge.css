@@ -1,0 +1,56 @@
+.Badge {
+  display: grid;
+  grid: auto 1fr / auto;
+  border: 3px solid lightgray;
+  border-radius: 18px;
+  margin: 25px auto;
+}
+
+.Badge > header {
+  background-color: lightgray;
+  color: #aaa;
+  padding: 10px 20px;
+  border-radius: 15px 15px 0 0;
+}
+
+.Badge:nth-of-type(odd) > header {
+  background-color: darkred;
+}
+.Badge:nth-of-type(odd) {
+  border-color: darkred;
+}
+.Badge:nth-of-type(even) > header {
+  background-color: darkblue;
+}
+.Badge:nth-of-type(even) {
+  border-color: darkblue;
+}
+
+.Badge > main {
+  display: grid;
+  gap: 20px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.Badge > main > .bio {
+  border: 1px solid #666;
+  border-radius: 3px;
+  height: 175px;
+  padding: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .Badge {
+    width: 700px;
+  }
+
+  .Badge > main {
+    grid-template-columns: repeat(2, auto);
+    width: 80%;
+  }
+
+  .Badge > main > .bio {
+    grid-column: span 2;
+  }
+}

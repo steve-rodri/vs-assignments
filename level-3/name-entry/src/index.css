@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: #eee;
+  padding: 0 15px;
+}
+
+#root {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+input {
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+input,
+button {
+  height: 55px;
+  border: none;
+}
+
+button {
+  padding: 0 15px;
+  background-color: dodgerblue;
+  border: 1px solid white;
+  color: white;
+  text-transform: uppercase;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.heading {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ol {
+  padding: 15px;
+}
+
+li {
+  font-size: 18px;
+}

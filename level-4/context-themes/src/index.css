@@ -1,0 +1,62 @@
+@import './themes/light.css';
+@import './themes/dark.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #333;
+  color: #eee;
+}
+
+#root {
+  display: grid;
+  grid: auto 1fr auto / auto;
+  min-height: 100vh;
+}
+
+nav {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  align-items: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  height: 75px;
+  width: 220px;
+  font-size: 18px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+footer {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

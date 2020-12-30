@@ -1,0 +1,16 @@
+nav.dark {
+  background-color: #111;
+  color: cyan;
+}
+
+main.dark {
+  background-color: #222;
+}
+
+main.dark > h1 {
+  color: orangered;
+}
+
+footer.dark {
+  background-color: #333;
+}

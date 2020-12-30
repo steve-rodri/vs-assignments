@@ -1,0 +1,55 @@
+form {
+  display: grid;
+  justify-content: center;
+  gap: 25px;
+  background-color: indigo;
+  padding: 25px 0;
+}
+
+input,
+button {
+  height: 55px;
+  padding: 10px;
+  font-size: large;
+  border: none;
+  border-radius: 3px;
+}
+
+button {
+  background-color: dodgerblue;
+  color: white;
+  outline: none;
+  transition: box-shadow 200ms ease-out;
+  text-transform: uppercase;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 4px white;
+}
+
+button:active {
+  opacity: 0.7;
+  box-shadow: 0 0 0 4px #0e70cc;
+}
+
+@media only screen and (min-width: 350px) {
+  input,
+  button {
+    width: 350px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  form {
+    padding: 75px 25px;
+    gap: 40px 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 0 0 15px 15px;
+  }
+  button {
+    grid-column: span 3;
+    justify-self: center;
+  }
+}

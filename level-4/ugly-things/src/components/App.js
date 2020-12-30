@@ -1,8 +1,13 @@
 import React from "react";
+import Form from "./Form";
 import "../styles/App.css";
 
 const App = () => {
-  return <div className="App"></div>;
+  return (
+    <>
+      <Form />
+    </>
+  );
 };
 
 export default App;

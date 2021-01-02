@@ -1,4 +1,6 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import Form from "./Form";
 import { UglyThingContextConsumer } from "../context/UglyThingContext";
 import "../styles/UglyThing.css";
@@ -18,19 +20,37 @@ class UglyThing extends React.Component {
     return (
       <UglyThingContextConsumer>
         {({ deleteThing }) => (
-          <li>
-            {this.state.editing ? (
-              <Form {...this.props} stopEditing={this.stopEditing} />
-            ) : (
-              <>
-                <img src={imgUrl} alt={title} />
-                <h2>{title}</h2>
-                <p>{description}</p>
-                <button onClick={this.startEditing}>Edit</button>
-                <button onClick={() => deleteThing(index)}>Delete</button>
-              </>
-            )}
-          </li>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img
+              variant="top"
+              src={imgUrl}
+              alt={title}
+              style={{ height: "12rem" }}
+            />
+            <Card.Body>
+              {this.state.editing ? (
+                <Form
+                  {...this.props}
+                  stopEditing={this.stopEditing}
+                  showLabels
+                />
+              ) : (
+                <>
+                  <Card.Title>{title}</Card.Title>
+                  <Card.Text>{description}</Card.Text>
+                  <Button onClick={this.startEditing} variant="primary">
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => deleteThing(index)}
+                    variant="outline-danger"
+                  >
+                    Delete
+                  </Button>
+                </>
+              )}
+            </Card.Body>
+          </Card>
         )}
       </UglyThingContextConsumer>
     );

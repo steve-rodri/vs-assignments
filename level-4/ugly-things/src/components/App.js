@@ -6,7 +6,7 @@ import "../styles/App.css";
 const App = () => {
   return (
     <>
-      <Form />
+      <Form className="main" />
       <List />
     </>
   );

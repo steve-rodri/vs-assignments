@@ -1,0 +1,14 @@
+ul > * {
+  list-style-type: none;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 18rem);
+  justify-content: center;
+  align-items: start;
+  gap: 25px;
+  padding: 50px 5px;
+  max-width: 1000px;
+  margin: 0 auto;
+}

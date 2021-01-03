@@ -8,3 +8,50 @@
 body {
   background-color: #c1c8d7;
 }
+
+form.main {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0;
+  gap: 0 1rem;
+  background-color: indigo;
+}
+
+@media only screen and (min-width: 1000px) {
+  form.main {
+    padding: 50px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 0 0 15px 15px;
+  }
+
+  form.main > button {
+    grid-column: span 3;
+    min-width: 15rem;
+    justify-self: center;
+  }
+}
+
+ul > * {
+  list-style-type: none;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 18rem);
+  justify-content: center;
+  align-items: start;
+  gap: 25px;
+  padding: 50px 5px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card-body > button:nth-of-type(1) {
+  margin: 0;
+}
+
+.card-body > button {
+  margin-left: 0.5rem;
+}

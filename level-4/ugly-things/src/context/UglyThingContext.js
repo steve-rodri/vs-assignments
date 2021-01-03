@@ -1,4 +1,10 @@
 import React from "react";
+import {
+  getThings,
+  createThing,
+  deleteThing,
+  updateThing,
+} from "../services/ugly-things-api";
 const { Provider, Consumer } = React.createContext();
 
 class UglyThingContextProvider extends React.Component {
@@ -6,23 +12,31 @@ class UglyThingContextProvider extends React.Component {
     things: [],
   };
 
-  addThing = thing => {
+  async componentDidMount() {
+    const things = await getThings();
+    this.setState({ things });
+  }
+
+  addThing = async data => {
+    const thing = await createThing(data);
     this.setState(prevState => ({
       things: [...prevState.things, thing],
     }));
   };
 
-  deleteThing = i => {
+  removeThing = async thing => {
+    await deleteThing(thing);
     this.setState(({ things }) => {
-      things.splice(i, 1);
-      return things;
+      things = things.filter(t => t._id !== thing._id);
+      return { things };
     });
   };
 
-  updateThing = (thing, i) => {
+  replaceThing = async thing => {
+    thing = await updateThing(thing);
     this.setState(({ things }) => {
-      things.splice(i, 1, thing);
-      return things;
+      things = things.map(t => (t._id === thing._id ? thing : t));
+      return { things };
     });
   };
 
@@ -30,8 +44,8 @@ class UglyThingContextProvider extends React.Component {
     const valueProps = {
       ...this.state,
       addThing: this.addThing,
-      deleteThing: this.deleteThing,
-      updateThing: this.updateThing,
+      deleteThing: this.removeThing,
+      updateThing: this.replaceThing,
     };
     return <Provider value={valueProps}>{this.props.children}</Provider>;
   }

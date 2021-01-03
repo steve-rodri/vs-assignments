@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { UglyThingContextConsumer } from "../context/UglyThingContext";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "../styles/Form.css";
 
 class UglyThingForm extends Component {
   constructor(props) {
@@ -15,21 +14,24 @@ class UglyThingForm extends Component {
   }
 
   componentDidMount() {
-    const { imgUrl = "", title = "", description = "" } = this.props;
-    this.setState({ imgUrl, title, description });
+    const { _id, imgUrl = "", title = "", description = "" } = this.props;
+    this.setState({ _id, imgUrl, title, description });
   }
 
-  onChange = ({ target: { name, value } }) => {
+  onChange = e => {
+    const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-  onSubmit = (e, { addThing, updateThing }) => {
+  onSubmit = (e, context) => {
     e.preventDefault();
-    if (this.props.index !== undefined) {
-      updateThing(this.state, this.props.index);
+    const { addThing, updateThing } = context;
+    if (this.state._id !== undefined) {
+      updateThing(this.state);
       if (this.props.stopEditing) this.props.stopEditing();
     } else {
-      addThing(this.state);
+      const { _id, ...data } = this.state;
+      addThing(data);
     }
     this.resetState();
   };
@@ -45,71 +47,88 @@ class UglyThingForm extends Component {
   };
 
   render() {
+    const { className } = this.props;
+    const isCardForm = className !== "main";
     return (
       <UglyThingContextConsumer>
         {context => (
-          <Form
-            onSubmit={e => this.onSubmit(e, context)}
-            className={this.props.className}
-          >
-            <Form.Group>
-              {this.props.showLabels ? <Form.Label>Title</Form.Label> : null}
-              <Form.Control
-                size="lg"
-                block
-                type="text"
-                name="title"
-                placeholder="Title"
-                value={this.state.title}
-                onChange={this.onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              {this.props.showLabels ? (
-                <Form.Label>Image Url</Form.Label>
-              ) : null}
-              <Form.Control
-                size="lg"
-                block
-                type="url"
-                name="imgUrl"
-                placeholder="Image Url"
-                value={this.state.imgUrl}
-                onChange={this.onChange}
-              />
-            </Form.Group>
-            <Form.Group>
-              {this.props.showLabels ? (
-                <Form.Label>Description</Form.Label>
-              ) : null}
-              <Form.Control
-                size="lg"
-                block
-                type="text"
-                name="description"
-                placeholder="Description"
-                value={this.state.description}
-                onChange={this.onChange}
-              />
-            </Form.Group>
-            <Button variant="primary" size="lg" type="submit">
-              Submit
-            </Button>
-            {this.props.className !== "main" && (
-              <Button
-                variant="outline-secondary"
-                size="lg"
-                onClick={this.onCancel}
-                style={{ marginLeft: ".5rem" }}
-              >
-                Cancel
-              </Button>
-            )}
+          <Form onSubmit={e => this.onSubmit(e, context)} className={className}>
+            <Title {...this.state} {...this} showLabel={isCardForm} />
+            <ImageUrl {...this.state} {...this} showLabel={isCardForm} />
+            <Description {...this.state} {...this} showLabel={isCardForm} />
+            <SubmitButton />
+            {isCardForm && <CancelButton onClick={this.onCancel} />}
           </Form>
         )}
       </UglyThingContextConsumer>
     );
   }
 }
+
+const label = (text, display) => {
+  if (display) return <Form.Label>{text}</Form.Label>;
+};
+
+const Title = ({ title, onChange, showLabel }) => (
+  <Form.Group>
+    {label("Title", showLabel)}
+    <Form.Control
+      block
+      name="title"
+      onChange={onChange}
+      placeholder="Title"
+      size="lg"
+      type="text"
+      value={title}
+    />
+  </Form.Group>
+);
+
+const ImageUrl = ({ imgUrl, onChange, showLabel }) => (
+  <Form.Group>
+    {label("Image Url", showLabel)}
+    <Form.Control
+      block
+      name="imgUrl"
+      onChange={onChange}
+      placeholder="Image Url"
+      size="lg"
+      type="url"
+      value={imgUrl}
+    />
+  </Form.Group>
+);
+
+const Description = ({ description, onChange, showLabel }) => (
+  <Form.Group>
+    {label("Description", showLabel)}
+    <Form.Control
+      block
+      name="description"
+      onChange={onChange}
+      placeholder="Description"
+      size="lg"
+      type="text"
+      value={description}
+    />
+  </Form.Group>
+);
+
+const SubmitButton = () => (
+  <Button variant="primary" size="lg" type="submit">
+    Submit
+  </Button>
+);
+
+const CancelButton = ({ onClick }) => (
+  <Button
+    onClick={onClick}
+    size="lg"
+    style={{ marginLeft: ".5rem" }}
+    variant="outline-secondary"
+  >
+    Cancel
+  </Button>
+);
 
 export default UglyThingForm;

@@ -1,5 +1,5 @@
-export const FavoriteButton = ({ onClick }) => (
-  <button onClick={onClick}>+</button>
+export const FavoriteButton = ({ onFavorite }) => (
+  <button onClick={onFavorite}>+</button>
 );
 
 export const Rank = ({ rank }) => (

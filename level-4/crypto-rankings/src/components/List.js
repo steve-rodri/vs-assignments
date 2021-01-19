@@ -13,21 +13,23 @@ const List = ({ layout, ...rest }) => {
   }
 };
 
-const Table = ({ coins }) => {
+const Table = ({ coins, store, toggleFavorite, view }) => {
+  if (view === "favorites") coins = store.filter(coin => coin.favorite);
   return (
     <div className="table">
       {coins.map(coin => (
-        <Row {...coin} key={coin.id} />
+        <Row {...coin} key={coin.id} onFavorite={() => toggleFavorite(coin)} />
       ))}
     </div>
   );
 };
 
-const Cards = ({ coins }) => {
+const Cards = ({ coins, store, toggleFavorite, view }) => {
+  if (view === "favorites") coins = store.filter(coin => coin.favorite);
   return (
     <div className="cards">
       {coins.map(coin => (
-        <Card {...coin} key={coin.id} />
+        <Card {...coin} key={coin.id} onFavorite={() => toggleFavorite(coin)} />
       ))}
     </div>
   );

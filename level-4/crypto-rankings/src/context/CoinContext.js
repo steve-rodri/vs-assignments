@@ -1,4 +1,5 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useState, useReducer, useEffect } from "react";
+// import throttle from "lodash/throttle";
 import coinReducer from "../helpers/coinReducer";
 import { loadState, saveState } from "../helpers/persistState";
 import { getCoins } from "../services/nomics";
@@ -9,6 +10,7 @@ const CoinContextProvider = ({ children }) => {
   const persistedState = loadState();
   const initialState = persistedState || { coins: [], store: [], page: 1 };
   const [state, dispatch] = useReducer(coinReducer, initialState);
+  const [layout, setLayout] = useState("table");
 
   const toggleFavorite = coin => {
     coin.favorite = !coin.favorite;
@@ -32,6 +34,8 @@ const CoinContextProvider = ({ children }) => {
     nextPage: () => dispatch({ type: "NEXT_PAGE" }),
     prevPage: () => dispatch({ type: "PREV_PAGE" }),
     toggleFavorite,
+    layout,
+    setLayout,
   };
   return <CoinContext.Provider value={value}>{children}</CoinContext.Provider>;
 };

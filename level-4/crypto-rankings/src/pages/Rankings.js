@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import useViewSwitch from "../hooks/useViewSwitch";
 import NavBar from "../components/NavBar";
 import List from "../components/List";
 
-const Rankings = ({ path }) => {
-  const [layout, setLayout] = useState("table");
+const Rankings = ({ match }) => {
   const [views, swapView, setView] = useViewSwitch("all", "favorites");
   const history = useHistory();
   const switchView = () => {
@@ -14,11 +13,11 @@ const Rankings = ({ path }) => {
     else if (views[0] === "favorites") history.replace("/");
   };
   const [view, altView] = views;
-  const props = { view, altView, switchView, layout, setLayout };
+  const props = { view, altView, switchView };
   useEffect(() => {
-    if (path === "/favorites") setView("favorites");
-    else if (path === "/") setView("all");
-  }, [path, setView]);
+    if (match.path === "/favorites") setView("favorites");
+    else if (match.path === "/") setView("all");
+  }, [match.path, setView]);
   return (
     <div className="rankings">
       <NavBar {...props} />

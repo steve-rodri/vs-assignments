@@ -20,14 +20,27 @@ export const getCoins = async page => {
   }
 };
 
-export const getCoin = async id => {
+export const getCoinPriceData = async id => {
+  try {
+    const resp = await axios({
+      url: `${baseUrl}/currencies/ticker`,
+      params: { ...params, ids: id },
+      paramsSerializer: serializer,
+    });
+    return camelCase(resp.data[0]);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getCoinInfo = async id => {
   try {
     const resp = await axios({
       url: `${baseUrl}/currencies`,
       params: { ...params, ids: id },
       paramsSerializer: serializer,
     });
-    return camelCase(resp.data);
+    return camelCase(resp.data[0]);
   } catch (e) {
     console.log(e);
   }

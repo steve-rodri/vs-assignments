@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const FavoriteButton = ({ onFavorite }) => (
   <button onClick={onFavorite}>+</button>
 );
@@ -21,6 +23,12 @@ export const Name = ({ name }) => (
   <div className="name">
     <h2>{name}</h2>
   </div>
+);
+
+export const LinkedName = ({ name, id }) => (
+  <Link className="name" to={`/${id}`}>
+    <h2>{name}</h2>
+  </Link>
 );
 
 export const Price = ({ price }) => (

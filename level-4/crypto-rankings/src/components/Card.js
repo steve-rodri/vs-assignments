@@ -3,7 +3,7 @@ import PercentChanges from "./PercentChanges";
 import {
   Rank,
   Logo,
-  Name,
+  LinkedName,
   Ticker,
   Price,
   MarketCap,
@@ -16,7 +16,7 @@ const Card = props => {
       <Rank {...props} />
       <MarketCap {...props} />
       <Price {...props} />
-      <Name {...props} />
+      <LinkedName {...props} />
       <Ticker {...props} />
       <PercentChanges {...props} />
     </div>

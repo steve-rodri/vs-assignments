@@ -8,16 +8,21 @@ import {
   Price,
   MarketCap,
 } from "./_coin-sub-components";
+import "../styles/Card.css";
 
 const Card = props => {
   return (
     <div className="card">
       <Logo {...props} />
-      <Rank {...props} />
-      <MarketCap {...props} />
-      <Price {...props} />
-      <LinkedName {...props} />
-      <Ticker {...props} />
+      <div className="rank-group">
+        <Rank {...props} />
+        <MarketCap {...props} />
+        <Price {...props} />
+      </div>
+      <div className="name-group">
+        <LinkedName {...props} />
+        <Ticker {...props} />
+      </div>
       <PercentChanges {...props} />
     </div>
   );

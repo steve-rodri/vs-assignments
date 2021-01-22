@@ -1,0 +1,43 @@
+@import "./Fonts.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Input Mono";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: bold;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  --light-gray: #eeeeee;
+  --gray: #808080;
+  --black: #242424;
+  --gold: #eac500;
+}
+
+button {
+  background-color: var(--gray);
+  color: var(--light-gray);
+  border: none;
+  font-size: medium;
+  outline: none;
+}
+
+.favorite {
+  background-color: gold;
+}

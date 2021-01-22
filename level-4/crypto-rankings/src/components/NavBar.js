@@ -3,16 +3,20 @@ import CoinContext from "../context/CoinContext";
 
 const NavBar = props => {
   return (
-    <div className="NavBar">
+    <nav>
       <ViewChangeButton {...props} />
       <LayoutPicker {...props} />
       <PageSwitcher {...props} />
-    </div>
+    </nav>
   );
 };
 
 const ViewChangeButton = ({ altView, switchView }) => {
-  return <button onClick={switchView}>{altView}</button>;
+  return (
+    <button className="view-change-button" onClick={switchView}>
+      {altView}
+    </button>
+  );
 };
 
 const LayoutPicker = () => {

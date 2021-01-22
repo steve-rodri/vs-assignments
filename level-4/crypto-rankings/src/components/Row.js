@@ -14,10 +14,7 @@ const Row = props => {
   return (
     <div className="row">
       <FavoriteButton {...props} />
-      <Link
-        style={{ display: "flex", textDecoration: "none", color: "black" }}
-        to={`/${props.id}`}
-      >
+      <Link to={`/${props.id}`}>
         <Rank {...props} />
         <Logo {...props} />
         <Name {...props} />

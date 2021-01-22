@@ -1,0 +1,72 @@
+.table {
+  display: grid;
+  gap: 5px;
+}
+
+.table > header {
+  margin-left: 60px;
+}
+
+.table > header,
+.row > a {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 5% 5% 30% 15% 30% 10%;
+  justify-items: center;
+  align-items: center;
+  gap: 0 10px;
+}
+
+.table > header > .name {
+  justify-self: start;
+}
+
+.table > header > .market-cap,
+.row > a > .market-cap {
+  justify-self: end;
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto 1fr;
+  background-color: var(--light-gray);
+  border-radius: 2px;
+}
+
+.row > a {
+  padding: 10px 0;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.row > .favorite-button {
+  width: 60px;
+  border-radius: 2px 0 0 2px;
+}
+
+.row > a > .logo {
+  height: 55px;
+  width: 55px;
+}
+
+.row > a > .name {
+  justify-self: start;
+}
+
+.row > a > .percent-changes {
+  display: grid;
+  grid-auto-columns: 70px;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.row > a > .percent-changes > * {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  max-width: 70px;
+  overflow: visible;
+  gap: 5px;
+}

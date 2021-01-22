@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import useViewSwitch from "../hooks/useViewSwitch";
 import NavBar from "../components/NavBar";
 import List from "../components/List";
+import "../styles/Rankings.css";
 
 const Rankings = ({ match }) => {
   const [views, swapView, setView] = useViewSwitch("all", "favorites");

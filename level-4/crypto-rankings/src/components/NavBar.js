@@ -20,11 +20,16 @@ const ViewChangeButton = ({ altView, switchView }) => {
 };
 
 const LayoutPicker = () => {
-  const { setLayout } = useContext(CoinContext);
+  const { layout, setLayout } = useContext(CoinContext);
+  const active = l => (l === layout ? "active" : null);
   return (
     <div className="layout-picker">
-      <button onClick={() => setLayout("table")}>List</button>
-      <button onClick={() => setLayout("cards")}>Icons</button>
+      <button onClick={() => setLayout("table")} className={active("table")}>
+        List
+      </button>
+      <button onClick={() => setLayout("cards")} className={active("cards")}>
+        Icons
+      </button>
     </div>
   );
 };

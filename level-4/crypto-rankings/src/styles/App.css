@@ -26,6 +26,7 @@ body {
   margin: 0;
   --light-gray: #eeeeee;
   --gray: #808080;
+  --dark-gray: #505050;
   --black: #242424;
   --gold: #eac500;
 }
@@ -36,6 +37,15 @@ button {
   border: none;
   font-size: medium;
   outline: none;
+}
+
+button.active {
+  background-color: var(--dark-gray);
+}
+
+button:hover,
+a:hover {
+  cursor: pointer;
 }
 
 .favorite {

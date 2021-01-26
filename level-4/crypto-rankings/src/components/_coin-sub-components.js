@@ -75,8 +75,8 @@ export const Links = coin => {
         </a>
       )}
       {coin.facebookUrl && (
-        <a href={coin.facebookUrl}>
-          target="blank" noopener="noreferrer" Facebook
+        <a href={coin.facebookUrl} target="blank" noopener="noreferrer">
+          Facebook
         </a>
       )}
       {coin.githubUrl && (

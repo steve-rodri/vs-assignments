@@ -4,32 +4,29 @@
 }
 
 .table > header {
-  margin-left: 60px;
+  margin-right: 60px;
+  padding: 0 5px;
 }
 
 .table > header,
 .row > a {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 5% 5% 30% 15% 30% 10%;
   justify-items: center;
+  grid-template-columns: 40px 40px 1fr;
   align-items: center;
-  gap: 0 10px;
+  gap: 0 15px;
+  margin: 0 5px;
 }
 
 .table > header > .name {
   justify-self: start;
 }
 
-.table > header > .market-cap,
-.row > a > .market-cap {
-  justify-self: end;
-}
-
 .row {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
   background-color: var(--light-gray);
   border-radius: 2px;
 }
@@ -43,30 +40,95 @@
 .row > .favorite-button {
   width: 60px;
   border-radius: 2px 0 0 2px;
+  grid-column-start: 2;
 }
 
 .row > a > .logo {
-  height: 55px;
-  width: 55px;
+  height: 40px;
+  width: 40px;
 }
 
 .row > a > .name {
   justify-self: start;
+  font-size: 0.55em;
 }
 
-.row > a > .percent-changes {
-  display: grid;
-  grid-auto-columns: 70px;
-  grid-auto-flow: column;
-  align-items: center;
-  gap: 25px;
+.table > header > .price,
+.table > header > .percent-changes,
+.table > header > .market-cap,
+.row > a > .price,
+.row > a > .percent-changes,
+.row > a > .market-cap {
+  display: none;
 }
 
-.row > a > .percent-changes > * {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  max-width: 70px;
-  overflow: visible;
-  gap: 5px;
+@media only screen and (min-width: 550px) {
+  .table > header {
+    margin-left: 60px;
+    margin-right: 0;
+  }
+
+  .row {
+    grid-template-columns: auto 1fr;
+  }
+
+  .row > .favorite-button {
+    grid-column-start: unset;
+  }
+
+  .row > a > .logo {
+    height: 55px;
+    width: 55px;
+  }
+
+  .row > a > .name {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  .table > header,
+  .row > a {
+    grid-template-columns: 40px 55px 1fr 120px 85px;
+  }
+
+  .table > header > .market-cap,
+  .table > header > .price,
+  .row > a > .market-cap,
+  .row > a > .price {
+    display: block;
+    justify-self: end;
+  }
+
+  .row > a > .name {
+    font-size: unset;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .table > header,
+  .row > a {
+    grid-template-columns: 40px 55px 1fr 120px 1fr 85px;
+  }
+
+  .table > header > .percent-changes {
+    display: block;
+  }
+
+  .row > a > .percent-changes {
+    display: grid;
+    grid-auto-columns: 70px;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .row > a > .percent-changes > * {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    max-width: 70px;
+    overflow: visible;
+    gap: 5px;
+  }
 }

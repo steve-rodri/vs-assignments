@@ -13,7 +13,7 @@ const TableHeaderRow = () => {
       <div className="price">
         <h5>Price</h5>
       </div>
-      <div className="change">
+      <div className="percent-changes">
         <h5>Change (%)</h5>
       </div>
       <div className="market-cap">

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CoinContext from "../context/CoinContext";
 import { getCoinPriceData, getCoinInfo } from "../services/nomics";
 import PercentChanges from "../components/PercentChanges";
+import Chart from "../components/Chart";
 import {
   FavoriteButton,
   Rank,
@@ -10,7 +11,10 @@ import {
   Name,
   Price,
   MarketCap,
+  Links,
+  Description,
 } from "../components/_coin-sub-components";
+import "../styles/Coin.css";
 
 const Coin = () => {
   const [coin, setCoin] = useState({});
@@ -32,13 +36,22 @@ const Coin = () => {
   }, [coinId, store]);
   return (
     <div className="coin">
-      <FavoriteButton {...coin} onFavorite={onFavorite} />
-      <Rank {...coin} />
-      <Logo {...coin} />
-      <Name {...coin} />
-      <Price {...coin} />
-      <PercentChanges {...coin} />
-      <MarketCap {...coin} />
+      <aside>
+        <Logo {...coin} />
+        <div className="rank-group">
+          <Name {...coin} />
+          <Rank {...coin} />
+          <Price {...coin} />
+          <MarketCap {...coin} />
+        </div>
+        <FavoriteButton {...coin} onFavorite={onFavorite} />
+        <Links {...coin} />
+      </aside>
+      <main>
+        <Chart {...coin} />
+        <PercentChanges {...coin} />
+        <Description {...coin} />
+      </main>
     </div>
   );
 };

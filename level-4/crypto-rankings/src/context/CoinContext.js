@@ -7,7 +7,7 @@ import { getCoins } from "../services/nomics";
 const CoinContext = createContext();
 
 const CoinContextProvider = ({ children }) => {
-  const persistedState = loadState();
+  const persistedState = loadState("coin-context");
   const initialState = persistedState || { coins: [], store: [], page: 1 };
   const [state, dispatch] = useReducer(coinReducer, initialState);
   const [layout, setLayout] = useState("table");
@@ -26,7 +26,7 @@ const CoinContextProvider = ({ children }) => {
   }, [state.page, state.store]);
 
   useEffect(() => {
-    saveState(state);
+    saveState(state, "coin-context");
   }, [state]);
 
   const value = {

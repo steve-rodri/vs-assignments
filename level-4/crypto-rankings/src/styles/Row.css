@@ -5,7 +5,7 @@
 
 .table > header {
   margin-right: 60px;
-  padding: 0 5px;
+  padding: 0 7.5px;
 }
 
 .table > header,
@@ -16,7 +16,6 @@
   grid-template-columns: 40px 40px 1fr;
   align-items: center;
   gap: 0 15px;
-  margin: 0 5px;
 }
 
 .table > header > .name {
@@ -27,19 +26,30 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;
-  background-color: var(--light-gray);
-  border-radius: 2px;
+  gap: 5px;
 }
 
 .row > a {
-  padding: 10px 0;
+  padding: 7.5px 5px;
   text-decoration: none;
+  border: 3px solid var(--light-gray);
+  border-radius: 2px;
+  transition: border 300ms ease-out, color 300ms ease-out;
+}
+
+.row > a.light {
+  border-color: var(--light-gray);
   color: var(--black);
+}
+
+.row > a.dark {
+  border-color: var(--dark-gray);
+  color: var(--light-gray);
 }
 
 .row > .favorite-button {
   width: 60px;
-  border-radius: 2px 0 0 2px;
+  border-radius: 2px;
   grid-column-start: 2;
 }
 
@@ -66,6 +76,7 @@
   .table > header {
     margin-left: 60px;
     margin-right: 0;
+    padding: 0 12.5px;
   }
 
   .row {

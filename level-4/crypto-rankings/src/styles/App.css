@@ -57,9 +57,15 @@ body {
 
 footer {
   height: 125px;
+  display: grid;
+  justify-content: center;
+}
+
+.nomics {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .nomics-logo {

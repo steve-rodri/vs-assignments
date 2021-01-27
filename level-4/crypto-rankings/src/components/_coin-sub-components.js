@@ -20,9 +20,9 @@ export const Logo = ({ id, logoUrl }) => (
   <img className="logo" src={logoUrl} alt={id} />
 );
 
-export const Name = ({ name }) => (
+export const Name = ({ name, favorite, showStar }) => (
   <div className="name">
-    <h2>{name}</h2>
+    <h2>{`${favorite && showStar ? "⭐️" : ""} ${name}`}</h2>
   </div>
 );
 
@@ -61,67 +61,67 @@ export const Links = coin => {
     <div className="links">
       {coin.blockExplorerUrl && (
         <a href={coin.blockExplorerUrl} target="blank" noopener="noreferrer">
-          Block Explorer
+          <p>Block Explorer</p>
         </a>
       )}
       {coin.blogUrl && (
         <a href={coin.blogUrl} target="blank" noopener="noreferrer">
-          Blog
+          <p>Blog</p>
         </a>
       )}
       {coin.discordUrl && (
         <a href={coin.discordUrl} target="blank" noopener="noreferrer">
-          Discord
+          <p>Discord</p>
         </a>
       )}
       {coin.facebookUrl && (
         <a href={coin.facebookUrl} target="blank" noopener="noreferrer">
-          Facebook
+          <p>Facebook</p>
         </a>
       )}
       {coin.githubUrl && (
         <a href={coin.githubUrl} target="blank" noopener="noreferrer">
-          GitHub
+          <p>GitHub</p>
         </a>
       )}
       {coin.linkedinUrl && (
-        <a href={coin.linkedinUrl}>
-          target="blank" noopener="noreferrer" LinkedIn
+        <a href={coin.linkedinUrl} target="blank" noopener="noreferrer">
+          <p>LinkedIn</p>
         </a>
       )}
       {coin.mediumUrl && (
         <a href={coin.mediumUrl} target="blank" noopener="noreferrer">
-          Medium
+          <p>Medium</p>
         </a>
       )}
       {coin.redditUrl && (
         <a href={coin.redditUrl} target="blank" noopener="noreferrer">
-          Reddit
+          <p>Reddit</p>
         </a>
       )}
       {coin.telegramUrl && (
         <a href={coin.telegramUrl} target="blank" noopener="noreferrer">
-          Telegram
+          <p>Telegram</p>
         </a>
       )}
       {coin.twitterUrl && (
         <a href={coin.twitterUrl} target="blank" noopener="noreferrer">
-          Twitter
+          <p>Twitter</p>
         </a>
       )}
       {coin.websiteUrl && (
         <a href={coin.websiteUrl} target="blank" noopener="noreferrer">
-          Website
+          <p>Website</p>
         </a>
       )}
       {coin.whitepaperUrl && (
         <a href={coin.whitepaperUrl} target="blank" noopener="noreferrer">
-          White Paper
+          <p>White Paper</p>
         </a>
       )}
       {coin.youtubeUrl && (
         <a href={coin.youtubeUrl} target="blank" noopener="noreferrer">
-          YouTube
+          <p>YouTube</p>
         </a>
       )}
     </div>

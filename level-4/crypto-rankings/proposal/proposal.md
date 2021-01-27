@@ -1,8 +1,8 @@
 # App Idea
 
-I'm building a cryptocurrency ranking site using the Nomics API for data. It's
-for anyone who likes to check on the cryptocurrency market and view their
-favorite cryptocurrencies.
+I'm building a cryptocurrency ranking site using the [Nomics API][nomics] for
+data. It's for anyone who likes to check on the cryptocurrency market and view
+their favorite cryptocurrencies.
 
 # MVP
 
@@ -62,3 +62,5 @@ pages/
 --Coin.js
 --Favorites.js
 ```
+
+[nomics]: https://nomics.com/docs/

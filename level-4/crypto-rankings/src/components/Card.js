@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../context/ThemeContext";
+import { Link } from "react-router-dom";
 import PercentChanges from "./PercentChanges";
 import {
   Rank,
   Logo,
-  LinkedName,
+  Name,
   Ticker,
   Price,
   MarketCap,
 } from "./_coin-sub-components";
 import "../styles/Card.css";
 
-const Card = props => {
+const Card = coin => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className="card">
-      <Logo {...props} />
+    <Link className={`card ${theme} `} to={`/${coin.id}`}>
+      <Logo {...coin} />
       <div className="rank-group">
-        <Rank {...props} />
-        <MarketCap {...props} />
-        <Price {...props} />
+        <Rank {...coin} />
+        <MarketCap {...coin} />
+        <Price {...coin} />
       </div>
       <div className="name-group">
-        <LinkedName {...props} />
-        <Ticker {...props} />
+        <Name {...coin} showStar={true} />
+        <Ticker {...coin} />
       </div>
-      <PercentChanges {...props} />
-    </div>
+      <PercentChanges {...coin} />
+    </Link>
   );
 };
 

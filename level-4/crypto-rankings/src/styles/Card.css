@@ -23,6 +23,18 @@
   gap: 30px 0;
   max-width: 325px;
   border: 5px solid var(--light-gray);
+  text-decoration: none;
+  color: var(--black);
+}
+
+.card.light {
+  color: var(--black);
+  border-color: var(--light-gray);
+}
+
+.card.dark {
+  color: var(--light-gray);
+  border-color: var(--dark-gray);
 }
 
 .card > .logo {
@@ -30,18 +42,18 @@
   width: 125px;
 }
 
-.rank-group {
+.card > .rank-group {
   display: grid;
   gap: 10px;
   align-content: start;
   justify-content: end;
 }
 
-.rank-group > * {
+.card > .rank-group > * {
   text-align: right;
 }
 
-.name-group {
+.card > .name-group {
   display: flex;
   justify-content: center;
   grid-column: span 2;

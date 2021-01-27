@@ -1,0 +1,83 @@
+nav {
+  display: grid;
+  grid-auto-rows: 50px;
+  gap: 20px;
+}
+
+nav > .layout-picker,
+nav > .page-switcher {
+  justify-self: end;
+}
+
+nav > .layout-picker {
+  grid-row-start: 1;
+}
+
+nav > .page-switcher {
+  grid-row-start: 2;
+}
+
+.page-switcher,
+.layout-picker {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.view-change-button {
+  border-radius: 2px;
+}
+
+.page-switcher > button,
+.layout-picker > button,
+.view-change-button {
+  text-transform: capitalize;
+  padding: 0 15px;
+}
+
+.page-switcher > button:first-child,
+.layout-picker > button:first-child {
+  border-radius: 2px 0 0 2px;
+}
+.page-switcher > button:last-child,
+.layout-picker > button:last-child {
+  border-radius: 0 2px 2px 0;
+  border-left: 1px solid var(--light-gray);
+}
+
+@media only screen and (min-width: 400px) {
+  nav {
+    display: grid;
+    grid: repeat(2, 55px) / repeat(2, auto);
+    gap: 20px;
+  }
+  nav > .view-change-button {
+    grid-row-start: 2;
+    grid-column: span 2;
+  }
+  nav > .layout-picker {
+    justify-self: start;
+  }
+
+  nav > .page-switcher {
+    justify-self: end;
+    grid-row-start: 1;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  nav {
+    grid: auto / auto 1fr auto;
+    grid-auto-flow: column;
+    height: 55px;
+    gap: 30px;
+  }
+
+  nav > .page-switcher {
+    justify-self: unset;
+  }
+
+  nav > .view-change-button {
+    grid-row-start: unset;
+    grid-column: unset;
+  }
+}

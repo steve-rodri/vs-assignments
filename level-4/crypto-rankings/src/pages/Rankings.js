@@ -13,16 +13,20 @@ const Rankings = ({ match }) => {
     if (views[0] === "all") history.replace("/favorites");
     else if (views[0] === "favorites") history.replace("/");
   };
+
   const [view, altView] = views;
   const props = { view, altView, switchView };
+
   useEffect(() => {
     if (match.path === "/favorites") setView("favorites");
     else if (match.path === "/") setView("all");
   }, [match.path, setView]);
+
   return (
     <div className="rankings">
       <NavBar {...props} />
       <List {...props} />
+      {view === "all" && <NavBar {...props} />}
     </div>
   );
 };

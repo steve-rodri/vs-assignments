@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import CoinContext from "../context/CoinContext";
+import "../styles/NavBar.css";
 
 const NavBar = props => {
   return (

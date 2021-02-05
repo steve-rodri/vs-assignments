@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #c1c8d7;
+}
+
+form.main {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0;
+  gap: 0 1rem;
+  background-color: cadetblue;
+}
+
+@media only screen and (min-width: 500px) {
+  form.main {
+    padding: 50px 0;
+    max-width: 400px;
+    margin: 100px auto;
+    border-radius: 15px;
+  }
+}
+
+ul > * {
+  list-style-type: none;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 18rem);
+  justify-content: center;
+  align-items: start;
+  gap: 25px;
+  padding: 50px 5px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card-body > button:nth-of-type(1) {
+  margin: 0;
+}
+
+.card-body > button {
+  margin-left: 0.5rem;
+}

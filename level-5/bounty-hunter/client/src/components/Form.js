@@ -29,9 +29,13 @@ const Form = props => {
   }, [props]);
 
   const onChange = e => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     if (name === "bountyAmount") {
       setState(prev => ({ ...prev, [name]: value * 200 }));
+      return;
+    }
+    if (name === "living") {
+      setState(prev => ({ ...prev, [name]: checked }));
       return;
     }
     setState(prev => ({ ...prev, [name]: value }));
@@ -127,13 +131,11 @@ const LastName = ({ lastName, onChange, showLabel }) => (
 const Living = ({ living, onChange }) => (
   <BSForm.Group controlId="formBasicCheckbox">
     <BSForm.Check
-      block
       name="living"
-      onChange={onChange}
-      size="lg"
       type="checkbox"
-      value={living}
       label="Bounty is alive"
+      onChange={onChange}
+      checked={living}
     />
   </BSForm.Group>
 );

@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const cors = require("cors");
 const app = express();
 
 mongoose.connect(
@@ -16,6 +17,7 @@ mongoose.connect(
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.use("/", require("./routes/bounty"));
 

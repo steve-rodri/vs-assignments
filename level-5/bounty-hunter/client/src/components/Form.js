@@ -102,13 +102,12 @@ const FirstName = ({ firstName, onChange, showLabel }) => (
   <BSForm.Group>
     {label("First Name", showLabel)}
     <BSForm.Control
-      block
       name="firstName"
       onChange={onChange}
       placeholder="First Name"
       size="lg"
       type="text"
-      value={firstName}
+      value={firstName || ""}
     />
   </BSForm.Group>
 );
@@ -117,13 +116,12 @@ const LastName = ({ lastName, onChange, showLabel }) => (
   <BSForm.Group>
     {label("Last Name", showLabel)}
     <BSForm.Control
-      block
       name="lastName"
       onChange={onChange}
       placeholder="Last Name"
       size="lg"
       type="text"
-      value={lastName}
+      value={lastName || ""}
     />
   </BSForm.Group>
 );
@@ -135,7 +133,7 @@ const Living = ({ living, onChange }) => (
       type="checkbox"
       label="Bounty is alive"
       onChange={onChange}
-      checked={living}
+      checked={living || false}
     />
   </BSForm.Group>
 );
@@ -147,7 +145,7 @@ const BountyAmount = ({ bountyAmount, onChange }) => (
       type="range"
       name="bountyAmount"
       onChange={onChange}
-      value={bountyAmount / 200}
+      value={bountyAmount / 200 || 0}
     />
   </BSForm.Group>
 );
@@ -156,12 +154,11 @@ const Type = ({ type, onChange, showLabel }) => (
   <BSForm.Group controlId="formBasicRange">
     {label("Type", showLabel)}
     <BSForm.Control
-      block
       as="select"
       name="type"
       onChange={onChange}
       size="lg"
-      value={type}
+      value={type || "Jedi"}
     >
       <option>Jedi</option>
       <option>Sith</option>
@@ -173,13 +170,12 @@ const Photo = ({ photoUrl, onChange, showLabel }) => (
   <BSForm.Group>
     {label("Photo", showLabel)}
     <BSForm.Control
-      block
       name="photoUrl"
       onChange={onChange}
       placeholder="url of photo"
       size="lg"
       type="url"
-      value={photoUrl}
+      value={photoUrl || ""}
     />
   </BSForm.Group>
 );

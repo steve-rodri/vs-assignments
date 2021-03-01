@@ -30,6 +30,7 @@ app.use(
 );
 
 app.use(require("./routes/auth"));
+app.use(require("./routes/issue"));
 
 app.use((err, _, res) => {
   console.log(err);

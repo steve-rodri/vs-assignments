@@ -5,16 +5,18 @@ const commentSchema = new Schema({
     type: String,
     required: true,
   },
-  issue: {
-    type: Schema.Types.ObjectId,
-    ref: "issue",
-    required: true,
-  },
   creator: {
     type: Schema.Types.ObjectId,
     ref: "user",
     required: true,
+    autopopulate: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
   },
 });
+
+commentSchema.plugin(require("mongoose-autopopulate"));
 
 module.exports = model("comment", commentSchema);

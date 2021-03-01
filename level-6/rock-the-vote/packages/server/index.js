@@ -31,6 +31,7 @@ app.use(
 
 app.use(require("./routes/auth"));
 app.use(require("./routes/issue"));
+app.use(require("./routes/comment"));
 
 app.use((err, _, res) => {
   console.log(err);

@@ -7,7 +7,7 @@ const commentSchema = new Schema({
   },
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
     required: true,
     autopopulate: true,
   },
@@ -19,4 +19,4 @@ const commentSchema = new Schema({
 
 commentSchema.plugin(require("mongoose-autopopulate"));
 
-module.exports = model("comment", commentSchema);
+module.exports = model("Comment", commentSchema);

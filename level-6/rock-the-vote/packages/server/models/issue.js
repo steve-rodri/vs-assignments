@@ -4,22 +4,21 @@ const issueSchema = new Schema({
   title: {
     type: String,
     required: true,
-    maxLength: 30,
   },
   description: {
     type: String,
     required: true,
   },
   comments: [
-    { type: Schema.Types.ObjectId, ref: "comment", autopopulate: true },
+    { type: Schema.Types.ObjectId, ref: "Comment", autopopulate: true },
   ],
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
     required: true,
   },
-  upvotedUsers: [{ type: Schema.Types.ObjectId, ref: "user" }],
-  downvotedUsers: [{ type: Schema.Types.ObjectId, ref: "user" }],
+  upvotedUsers: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  downvotedUsers: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
 issueSchema.set("toJSON", { virtuals: true });
@@ -32,4 +31,4 @@ issueSchema.virtual("votes").get(function virtualVotes() {
 
 issueSchema.plugin(require("mongoose-autopopulate"));
 
-module.exports = model("issue", issueSchema);
+module.exports = model("Issue", issueSchema);

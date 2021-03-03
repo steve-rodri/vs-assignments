@@ -23,11 +23,11 @@ app.use(require("./routes/issue"));
 app.use(require("./routes/comment"));
 
 app.use((err, _, res) => {
-  console.log(err);
+  console.log(err); // eslint-disable-line
   res.send({ error: err.message });
 });
 
 app.listen(
   process.env.PORT,
-  console.log(`server listening on ${process.env.PORT}`)
+  console.log(`server listening on ${process.env.PORT}`) // eslint-disable-line
 );

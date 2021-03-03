@@ -1,9 +1,6 @@
-const Comment = require("./comment");
-const Issue = require("./issue");
-const User = require("./user");
-
+/* eslint-disable global-require */
 module.exports = {
-  Comment,
-  Issue,
-  User,
+  Comment: require("./comment"),
+  Issue: require("./issue"),
+  User: require("./user"),
 };

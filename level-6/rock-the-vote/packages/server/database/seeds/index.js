@@ -1,9 +1,6 @@
-const seedUsers = require("./user");
-const seedComments = require("./comment");
-const seedIssues = require("./issue");
-
+/* eslint-disable global-require */
 module.exports = {
-  seedUsers,
-  seedComments,
-  seedIssues,
+  seedUsers: require("./user"),
+  seedComments: require("./comment"),
+  seedIssues: require("./issue"),
 };

@@ -1,10 +1,11 @@
 const faker = require("faker");
+const bcrypt = require("bcrypt");
 const seeder = require("../seeder");
 const { User } = require("../../models");
 
-const genUser = () => ({
+const genUser = async () => ({
   username: faker.internet.userName(),
-  password: faker.internet.password(),
+  password: await bcrypt.hash(faker.internet.password(), 10),
 });
 
 module.exports = async count =>

@@ -1,44 +1,35 @@
-const express = require("express");
-const jwt = require("jsonwebtoken");
-const User = require("../models/user");
-const createNewUser = require("../services/createNewUser");
+const { Router } = require("express");
+const {
+  findUser,
+  findOrCreateUser,
+  getToken,
+} = require("../database/operations/user");
 
-const router = express.Router();
+const login = async (req, res, next) => {
+  try {
+    const user = await findUser(req.body.username.toLowerCase());
+    const token = getToken(user, req.body.password);
+    res.status(200).send({ token, user });
+  } catch (err) {
+    res.status(500);
+    if (err.status) res.status(err.status);
+    next(err);
+  }
+};
 
-router
-  .route("/auth")
-  .post((req, res, next) => {
-    User.findOne({ username: req.body.username.toLowerCase() })
-      .then(user => {
-        if (user) {
-          res.status(403);
-          return next(new Error("That username is already taken"));
-        }
-        return createNewUser(req.body).then(data => res.status(201).send(data));
-      })
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  })
-  .get((req, res, next) => {
-    User.findOne({ username: req.body.username.toLowerCase() })
-      .then(user => {
-        if (!user) {
-          res.status(403);
-          return next(new Error("No user found with those credentials"));
-        }
-        if (req.body.password !== user.password) {
-          res.status(403);
-          return next(new Error("Password is incorrect"));
-        }
-        const token = jwt.sign(user.toObject(), process.env.SECRET);
-        return res.status(200).send({ token, user });
-      })
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  });
+const signup = async (req, res, next) => {
+  try {
+    const user = await findOrCreateUser(req.body);
+    res.status(201).send(user);
+  } catch (err) {
+    if (err.status) res.status(err.status);
+    else res.status(500);
+    next(err);
+  }
+};
+
+const router = Router();
+router.get("/auth", login);
+router.post("/auth", signup);
 
 module.exports = router;

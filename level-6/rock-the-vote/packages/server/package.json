@@ -18,8 +18,8 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "nodemon index.js",
-    "reset": "node ./database/reset.js",
+    "start": "nodemon --no-warnings index.js",
+    "reset": "node --no-warnings ./database/reset.js",
     "debug": "nodemon --inspect index.js"
   }
 }

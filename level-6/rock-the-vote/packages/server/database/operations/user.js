@@ -1,4 +1,4 @@
-const jwt = require("express-jwt");
+const jwt = require("jsonwebtoken");
 const HTTPError = require("../../services/HTTPError");
 const User = require("../../models/user");
 const randomNum = require("../../services/randomNum");
@@ -11,8 +11,14 @@ const getRandomUsers = async (min, max) => {
 
 const getRandomUser = async () => {
   const users = await getRandomUsers(1, 1);
-  const user = users[0];
-  return user;
+  return users[0];
+};
+
+const getToken = async (user, password) => {
+  const match = await user.verify(password.toString());
+  if (!match) throw new HTTPError(403, "Username or password incorrect");
+  const userNoPw = user.withoutPassword();
+  return jwt.sign(userNoPw, process.env.SECRET);
 };
 
 const createUser = async data => {
@@ -22,24 +28,18 @@ const createUser = async data => {
   return { user, token };
 };
 
-const findUser = async username => {
+const findUser = async ({ username, password }) => {
   let user = await User.findOne({ username });
-  if (!user) throw new HTTPError(404, "no user found");
+  if (!user) throw new HTTPError(403, "Username or password incorrect");
+  const token = await getToken(user, password);
   user = user.withoutPassword();
-  return user;
+  return { user, token };
 };
 
-const findOrCreateUser = async data => {
-  const username = data.username.toLowerCase();
+const findOrCreateUser = async ({ username, password }) => {
   const user = await User.findOne({ username });
   if (user) throw new HTTPError(403, "username already taken");
-  return createUser(data);
-};
-
-const getToken = async (user, password) => {
-  const match = await user.checkPassword(password);
-  if (!match) throw new HTTPError(403, "password is incorrect");
-  return jwt.sign(user, process.env.SECRET);
+  return createUser({ username, password });
 };
 
 module.exports = {
@@ -47,5 +47,4 @@ module.exports = {
   getRandomUsers,
   findOrCreateUser,
   findUser,
-  getToken,
 };

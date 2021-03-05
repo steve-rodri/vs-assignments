@@ -1,126 +1,104 @@
 const { Router } = require("express");
-const Issue = require("../models/issue");
-const Comment = require("../models/comment");
+const {
+  findIssue,
+  findIssues,
+  createIssue,
+  deleteIssue,
+  updateIssue,
+  upvoteIssue,
+  downvoteIssue,
+  addCommentToIssue,
+  removeCommentFromIssue,
+} = require("../database/operations");
+
+const index = async (_, res, next) => {
+  try {
+    const issues = await findIssues();
+    res.status(200).send(issues);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const create = async (req, res, next) => {
+  try {
+    const issue = await createIssue(req);
+    res.status(201).send(issue);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const show = async (req, res, next) => {
+  try {
+    const issue = await findIssue(req.params.id);
+    res.status(200).send(issue);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const remove = async (req, res, next) => {
+  try {
+    await deleteIssue(req.params.id, req.user);
+    res.status(200).send("successfully deleted issue");
+  } catch (err) {
+    next(err);
+  }
+};
+
+const update = async (req, res, next) => {
+  try {
+    const issue = await updateIssue(req.params.id, req);
+    res.status(200).send(issue);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const upvote = async (req, res, next) => {
+  try {
+    const issue = await upvoteIssue(req.params.id, req.user);
+    res.status(200).send(issue);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const downvote = async (req, res, next) => {
+  try {
+    const issue = await downvoteIssue(req.params.id, req.user);
+    res.status(200).send(issue);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const addComment = async (req, res, next) => {
+  try {
+    const issue = await addCommentToIssue(req.params.id, req);
+    res.status(200).send(issue);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const removeComment = async (req, res, next) => {
+  try {
+    const { issueId, commentId } = req.params;
+    const issue = await removeCommentFromIssue(issueId, commentId, req.user);
+    res.status(200).send(issue);
+  } catch (err) {
+    next(err);
+  }
+};
 
 const router = Router();
-
-router
-  .route("/issues")
-  .get((_, res, next) => {
-    Issue.find()
-      .then(issues => issues.sort((a, b) => a.votes.total - b.votes.total))
-      .then(issues => res.status(200).send(issues))
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  })
-  .post((req, res, next) => {
-    req.body.creator = req.user._id;
-    new Issue(req.body)
-      .save()
-      .then(saved => res.status(202).send(saved))
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  });
-
-router
-  .route("/issues/:id")
-  .get((req, res, next) => {
-    Issue.findOne({ _id: req.params.id })
-      .then(issue => res.status(200).send(issue))
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  })
-  .delete((req, res, next) => {
-    Issue.findOneAndDelete({ _id: req.params.id, creator: req.user._id })
-      .then(() => res.status(200).send("Successfully deleted issue"))
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  })
-  .put((req, res, next) => {
-    Issue.findOneAndUpdate(
-      { _id: req.params.id, creator: req.user._id },
-      req.body,
-      { new: true }
-    )
-      .then(updatedIssue => res.status(202).send(updatedIssue))
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  });
-
-router.put("/issues/:id/upvote", (req, res, next) => {
-  Issue.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      $addToSet: { upvotedUsers: req.user._id },
-      $pull: { downvotedUsers: req.user._id },
-    },
-    { new: true }
-  )
-    .then(issue => res.status(202).send(issue))
-    .catch(err => {
-      res.status(500);
-      return next(err);
-    });
-});
-
-router.put("/issues/:id/downvote", (req, res, next) => {
-  Issue.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      $addToSet: { downvotedUsers: req.user._id },
-      $pull: { upvotedUsers: req.user._id },
-    },
-    { new: true }
-  )
-    .then(issue => res.status(202).send(issue))
-    .catch(err => {
-      res.status(500);
-      return next(err);
-    });
-});
-
-router.route("/issues/:id/comments").post((req, res, next) => {
-  req.body.creator = req.user._id;
-  new Comment(req.body)
-    .save()
-    .then(comment => {
-      Issue.findOneAndUpdate(
-        { _id: req.params.id },
-        { $push: { comments: comment._id } },
-        { new: true }
-      ).then(issue => res.status(202).send(issue));
-    })
-    .catch(err => {
-      res.status(500);
-      return next(err);
-    });
-});
-
-router
-  .route("/issues/:issueId/comments/:commentId")
-  .delete((req, res, next) => {
-    Comment.findOneAndDelete({ _id: req.params.commentId })
-      .then(() => {
-        Issue.findOneAndUpdate(
-          { _id: req.params.issueId },
-          { $pull: { comments: req.params.commentId } },
-          { new: true }
-        ).then(issue => res.status(202).send(issue));
-      })
-      .catch(err => {
-        res.status(500);
-        return next(err);
-      });
-  });
+router.route("/issues").get(index).post(create);
+router.route("/issues/:id").get(show).delete(remove).put(update);
+router.route("/issues/:id/upvote").put(upvote);
+router.route("/issues/:id/downvote").put(downvote);
+router.route("/issues/:id/comments").post(addComment);
+router.route("/issues/:issueId/comments/:commentId").delete(removeComment);
 
 module.exports = router;

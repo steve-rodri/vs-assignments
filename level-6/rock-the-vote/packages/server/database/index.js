@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-mongoose.Promise = require("bluebird");
+
+const { connect, connection, set } = mongoose;
+const { on, host, name } = connection;
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URI, {
+connect(process.env.MONGODB_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -12,20 +14,17 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 // set update operations to return the updated document
-mongoose.set("returnOriginal", false);
+set("returnOriginal", false);
 
 // CONNECTION EVENTS
-mongoose.connection.on("connected", () => {
-  // eslint-disable-next-line no-console
-  console.log(
-    `Database connection open to ${mongoose.connection.host} ${mongoose.connection.name}`
-  );
+on("connected", () => {
+  console.log(`Mongoose default connection open on ${host} ${name}`); //eslint-disable-line
 });
 
-mongoose.connection.on("error", err => {
+on("error", err => {
   console.log(`Mongoose default connection error: ${err}`); //eslint-disable-line
 });
 
-mongoose.connection.on("disconnected", () => {
+on("disconnected", () => {
   console.log("Mongoose default connection disconnected"); //eslint-disable-line
 });

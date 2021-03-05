@@ -7,9 +7,9 @@ connection.dropDatabase();
 
 const seedDatabase = async () => {
   try {
-    await seedUsers(50);
+    await seedUsers(20);
     await seedComments(100);
-    await seedIssues(20);
+    await seedIssues(50);
     console.log("Database Seeded Successfully"); //eslint-disable-line
     connection.close();
   } catch (err) {

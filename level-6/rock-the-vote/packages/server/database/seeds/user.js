@@ -4,7 +4,7 @@ const seeder = require("../seeder");
 const { User } = require("../../models");
 
 const genUser = async () => ({
-  username: faker.internet.userName(),
+  username: faker.internet.userName().toLowerCase(),
   password: await bcrypt.hash(faker.internet.password(), 10),
 });
 

@@ -1,10 +1,7 @@
 const cors = require("cors");
-const dotenv = require("dotenv");
 const jwt = require("express-jwt");
 const morgan = require("morgan");
 const { json } = require("express");
-
-dotenv.config();
 
 const jsonWebToken = () => {
   const config = { secret: process.env.SECRET, algorithms: ["HS256"] };

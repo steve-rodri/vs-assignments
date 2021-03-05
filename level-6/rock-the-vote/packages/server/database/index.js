@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const { config } = require("dotenv");
 
 const { connect, connection, set } = mongoose;
 const { on, host, name } = connection;
 
-dotenv.config();
+config();
 
 connect(process.env.MONGODB_URI, {
   useCreateIndex: true,

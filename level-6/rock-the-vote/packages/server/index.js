@@ -1,19 +1,13 @@
 const express = require("express");
+const { config } = require("dotenv");
 
 const app = express();
 
+config();
 require("./database");
-require("./middleware")(app);
+require("./services/middleware")(app);
 require("./routes")(app);
+require("./services/catchErrors")(app);
 
-app.use((err, _, res) => {
-  console.log(err); // eslint-disable-line
-  res.status(500);
-  if (err.status) res.status(err.status);
-  res.send({ error: err.message });
-});
-
-app.listen(
-  process.env.PORT,
-  console.log(`Server listening on ${process.env.PORT}`) // eslint-disable-line
-);
+const { PORT } = process.env;
+app.listen(PORT, console.log(`Server listening on ${PORT}`)); //eslint-disable-line

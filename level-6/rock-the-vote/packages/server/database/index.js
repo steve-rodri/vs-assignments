@@ -11,6 +11,9 @@ mongoose.connect(process.env.MONGODB_URI, {
   useFindAndModify: false,
 });
 
+// set update operations to return the updated document
+mongoose.set("returnOriginal", false);
+
 // CONNECTION EVENTS
 mongoose.connection.on("connected", () => {
   // eslint-disable-next-line no-console

@@ -1,7 +1,7 @@
 const faker = require("faker");
 const bcrypt = require("bcrypt");
 const seeder = require("../seeder");
-const { User } = require("../../models");
+const { User } = require("../models");
 
 const genUser = async () => ({
   username: faker.internet.userName().toLowerCase(),
@@ -10,8 +10,8 @@ const genUser = async () => ({
 
 module.exports = async count =>
   seeder({
-    count: count || 5,
-    generateDoc: genUser,
     model: User,
     plural: "Users",
+    count: count || 5,
+    generateDoc: genUser,
   });

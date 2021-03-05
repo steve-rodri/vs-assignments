@@ -1,6 +1,6 @@
 const faker = require("faker");
 const seeder = require("../seeder");
-const { User, Comment } = require("../../models");
+const { User, Comment } = require("../models");
 
 const genComment = async () => {
   const users = await User.aggregate().sample(1).exec();
@@ -13,8 +13,8 @@ const genComment = async () => {
 
 module.exports = async count =>
   seeder({
-    count: count || 20,
     model: Comment,
     plural: "Comments",
+    count: count || 20,
     generateDoc: genComment,
   });

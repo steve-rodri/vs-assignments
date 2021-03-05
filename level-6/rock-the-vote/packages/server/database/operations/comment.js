@@ -1,6 +1,6 @@
 const HTTPError = require("../../services/HTTPError");
 const randomNum = require("../../services/randomNum");
-const { Comment } = require("../../models");
+const { Comment } = require("../models");
 const { addCommentToIssue, removeCommentFromIssue } = require("./issue");
 
 const getRandomComments = async (min, max) => {

@@ -1,5 +1,5 @@
 const HTTPError = require("../../services/HTTPError");
-const { Issue } = require("../../models");
+const { Issue } = require("../models");
 
 const findIssue = async id => Issue.findById(id);
 

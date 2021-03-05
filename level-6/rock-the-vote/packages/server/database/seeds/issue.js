@@ -1,7 +1,7 @@
 const faker = require("faker");
 const seeder = require("../seeder");
 const randomNum = require("../../services/randomNum");
-const { Issue, User } = require("../../models");
+const { Issue, User } = require("../models");
 const {
   getRandomUser,
   getRandomUsers,
@@ -32,15 +32,15 @@ const genIssue = async () => {
     title: faker.lorem.sentence(),
     description: faker.lorem.paragraph(),
     creator: await getRandomUser(),
-    comments: await getRandomComments(2, totalUsers * 3),
+    comments: await getRandomComments(2, totalUsers * 2),
     ...voters,
   };
 };
 
 module.exports = async count =>
   seeder({
-    count: count || 15,
     model: Issue,
     plural: "Issues",
+    count: count || 15,
     generateDoc: genIssue,
   });

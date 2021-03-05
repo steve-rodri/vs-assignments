@@ -14,6 +14,7 @@ const userSchema = new Schema({
     minLength: 8,
   },
 });
+
 userSchema.methods.verify = async function comparePassword(attempt) {
   return bcrypt.compare(attempt, this.password);
 };

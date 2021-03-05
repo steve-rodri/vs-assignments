@@ -9,7 +9,6 @@ const commentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
     required: true,
-    autopopulate: true,
   },
   date: {
     type: Date,
@@ -17,6 +16,8 @@ const commentSchema = new Schema({
   },
 });
 
-commentSchema.plugin(require("mongoose-autopopulate"));
+commentSchema.pre("find", function popCreator() {
+  this.populate({ path: "creator", select: "-password" });
+});
 
 module.exports = model("Comment", commentSchema);

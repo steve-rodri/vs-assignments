@@ -15,18 +15,21 @@ const createComment = async ({ user, body }) => {
   const data = { ...rest, creator: user._id };
   const comment = await Comment.create(data);
   await addCommentToIssue(issueId, comment);
+  return comment;
 };
 
 const updateComment = async ({ user, body, params: { id } }) => {
   const filter = { _id: id, creator: user._id };
   const comment = await Comment.findOneAndUpdate(filter, body);
   if (!comment) throw new HTTPError(403, "Cannot update unowned comment");
+  return comment;
 };
 
 const deleteComment = async ({ user, body, params: { id } }) => {
   if (!body.issueId) throw new HTTPError(403, "No issueId");
   await Comment.findOneAndDelete({ _id: id, creator: user._id });
   await removeCommentFromIssue(body.issueId, id);
+  return "Successfully deleted comment";
 };
 
 module.exports = {

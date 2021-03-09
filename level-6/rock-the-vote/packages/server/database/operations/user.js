@@ -28,7 +28,8 @@ const createUser = async data => {
   return { user, token };
 };
 
-const findUser = async ({ username, password }) => {
+const findUser = async ({ body }) => {
+  const { username, password } = body;
   let user = await User.findOne({ username });
   if (!user) throw new HTTPError(403, "Username or password incorrect");
   const token = await getToken(user, password);
@@ -36,7 +37,8 @@ const findUser = async ({ username, password }) => {
   return { user, token };
 };
 
-const findOrCreateUser = async ({ username, password }) => {
+const findOrCreateUser = async ({ body }) => {
+  const { username, password } = body;
   const user = await User.findOne({ username });
   if (user) throw new HTTPError(403, "username already taken");
   return createUser({ username, password });

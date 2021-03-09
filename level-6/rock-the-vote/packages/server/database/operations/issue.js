@@ -1,54 +1,63 @@
 const HTTPError = require("../../services/HTTPError");
 const { Issue } = require("../models");
 
-const findIssue = async id => Issue.findById(id);
+const findIssue = async ({ params: { id } }) => Issue.findById(id);
 
 const createIssue = async ({ user, body }) => {
   const data = { ...body, creator: user._id };
   return Issue.create(data);
 };
 
-const deleteIssue = async (id, user) => {
+const deleteIssue = async ({ user, params: { id } }) => {
   const issue = await Issue.findOneAndDelete({ _id: id, creator: user._id });
-  if (!issue) throw new HTTPError(403, "user cannot delete this issue");
+  if (!issue) throw new HTTPError(403, "User cannot delete this Issue");
 };
 
-const findIssues = async params => {
-  const issues = await Issue.find(params);
+const findIssues = async () => {
+  const issues = await Issue.find();
   return issues.sort((a, b) => b.votes.total - a.votes.total);
 };
 
-const updateIssue = async (id, { user, body }) => {
+const updateIssue = async ({ user, body, params: { id } }) => {
   const filter = { _id: id, creator: user._id };
   const issue = await Issue.findOneAndUpdate(filter, body);
-  if (!issue) throw new HTTPError(403, "user cannot update this issue");
+  if (!issue) throw new HTTPError(403, "User cannot update this Issue");
   return issue;
 };
 
-const upvoteIssue = async (id, user) => {
+const upvoteIssue = async ({ user, params: { id } }) => {
   const data = {
     $addToSet: { upvotedUsers: user._id },
     $pull: { downvotedUsers: user._id },
   };
-  return Issue.findByIdAndUpdate(id, data);
+  const issue = await Issue.findByIdAndUpdate(id, data);
+  console.log(issue);
+  if (!issue) throw new HTTPError(404, "Issue not found");
+  return issue;
 };
 
-const downvoteIssue = async (id, user) => {
+const downvoteIssue = async ({ user, params: { id } }) => {
   const data = {
     $addToSet: { downvotedUsers: user._id },
     $pull: { upvotedUsers: user._id },
   };
-  return Issue.findByIdAndUpdate(id, data);
+  const issue = await Issue.findByIdAndUpdate(id, data);
+  if (!issue) throw new HTTPError(404, "Issue not found");
+  return issue;
 };
 
 const addCommentToIssue = async (id, comment) => {
   const data = { $push: { comments: comment._id } };
-  return Issue.findByIdAndUpdate(id, data);
+  const issue = await Issue.findByIdAndUpdate(id, data);
+  if (!issue) throw new HTTPError(404, "Issue not found");
+  return issue;
 };
 
 const removeCommentFromIssue = async (id, commentId) => {
   const data = { $pull: { comments: commentId } };
-  return Issue.findByIdAndUpdate(id, data);
+  const issue = await Issue.findByIdAndUpdate(id, data);
+  if (!issue) throw new HTTPError(404, "Issue not found");
+  return issue;
 };
 
 module.exports = {

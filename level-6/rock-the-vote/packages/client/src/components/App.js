@@ -1,14 +1,19 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useContext } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { Home, Login, Detail } from "../pages";
 import { ProtectedRoute, UnknownRoute } from "./routes";
+import UserContext from "../context/UserContext";
 
 const App = () => {
+  const { token } = useContext(UserContext);
   return (
     <Switch>
-      <ProtectedRoute exact path="/" component={Home} />
-      <ProtectedRoute path="/:id" component={Detail} />
-      <Route to="/login" component={Login} />
+      <Route
+        path="/login"
+        render={props => (token ? <Redirect to="/" /> : <Login {...props} />)}
+      />
+      <ProtectedRoute exact path="/" component={Home} token={token} />
+      <ProtectedRoute path="/:id" component={Detail} token={token} />
       <UnknownRoute />
     </Switch>
   );

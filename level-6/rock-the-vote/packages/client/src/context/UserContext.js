@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    saveState(userData, "user");
+    saveState("user", userData);
   }, [userData]);
 
   const value = {

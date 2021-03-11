@@ -1,11 +1,13 @@
 import axios from "axios";
+import { loadState } from "../helpers/persistState";
 
 const authAxios = axios.create();
 const BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
 
 authAxios.interceptors.request.use(config => {
-  const token = localStorage.getItem("token");
-  config.header.Authorization = `Bearer ${token}`;
+  const { token } = loadState("user");
+  config.headers.Authorization = `Bearer ${token}`;
+  return config;
 });
 
 // Issues
@@ -14,7 +16,7 @@ export const getIssues = async () => {
     const res = await authAxios.get(`${BASE_URL}/issues`);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -23,7 +25,7 @@ export const createIssue = async data => {
     const res = await authAxios.post(`${BASE_URL}/issues`, data);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -32,7 +34,7 @@ export const getIssue = async id => {
     const res = await authAxios.get(`${BASE_URL}/issues/${id}`);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -41,7 +43,7 @@ export const deleteIssue = async id => {
     const res = await authAxios.delete(`${BASE_URL}/issues/${id}`);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -50,7 +52,7 @@ export const updateIssue = async (id, data) => {
     const res = await authAxios.put(`${BASE_URL}/issues/${id}`, data);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -59,7 +61,7 @@ export const upvoteIssue = async id => {
     const res = await authAxios.put(`${BASE_URL}/issues/${id}/upvote`);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -68,7 +70,7 @@ export const downvoteIssue = async id => {
     const res = await authAxios.put(`${BASE_URL}/issues/${id}/downvote`);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -78,7 +80,7 @@ export const createComment = async data => {
     const res = await authAxios.post(`${BASE_URL}/comments`, data);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -87,7 +89,7 @@ export const deleteComment = async id => {
     const res = await authAxios.delete(`${BASE_URL}/comments/${id}`);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };
 
@@ -96,6 +98,6 @@ export const updateComment = async (id, data) => {
     const res = await authAxios.put(`${BASE_URL}/comments/${id}`, data);
     return res.data;
   } catch (err) {
-    console.log(err.response.data.error);
+    console.log(err);
   }
 };

@@ -5,7 +5,7 @@ const { json } = require("express");
 
 const jsonWebToken = () => {
   const config = { secret: process.env.SECRET, algorithms: ["HS256"] };
-  const pathIsAuth = { path: ["/auth"] };
+  const pathIsAuth = { path: ["/login", "/signup"] };
   return jwt(config).unless(pathIsAuth);
 };
 

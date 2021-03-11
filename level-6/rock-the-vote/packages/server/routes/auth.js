@@ -6,6 +6,7 @@ const login = new RouteHandler(findUser, 200).use();
 const signup = new RouteHandler(findOrCreateUser, 201).use();
 
 const router = Router();
-router.route("/auth").get(login).post(signup);
+router.post("/login", login);
+router.post("/signup", signup);
 
 module.exports = router;

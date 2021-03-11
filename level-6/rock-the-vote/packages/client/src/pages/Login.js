@@ -1,7 +1,13 @@
 import React from "react";
+import { Center } from "@chakra-ui/react";
+import LoginForm from "../components/LoginForm";
 
 const Login = () => {
-  return <div className="Login">Login</div>;
+  return (
+    <Center h="100vh">
+      <LoginForm />
+    </Center>
+  );
 };
 
 export default Login;

@@ -16,7 +16,7 @@ const getRandomUser = async () => {
 
 const getToken = async (user, password) => {
   const match = await user.verify(password.toString());
-  if (!match) throw new HTTPError(403, "Username or password incorrect");
+  if (!match) throw new HTTPError(403, "Password is incorrect");
   const userNoPw = user.withoutPassword();
   return jwt.sign(userNoPw, process.env.SECRET);
 };
@@ -30,8 +30,9 @@ const createUser = async data => {
 
 const findUser = async ({ body }) => {
   const { username, password } = body;
+  if (!username) throw new HTTPError(404, "No username provided");
   let user = await User.findOne({ username });
-  if (!user) throw new HTTPError(403, "Username or password incorrect");
+  if (!user) throw new HTTPError(403, "No User found with that Username");
   const token = await getToken(user, password);
   user = user.withoutPassword();
   return { user, token };
@@ -40,7 +41,7 @@ const findUser = async ({ body }) => {
 const findOrCreateUser = async ({ body }) => {
   const { username, password } = body;
   const user = await User.findOne({ username });
-  if (user) throw new HTTPError(403, "username already taken");
+  if (user) throw new HTTPError(403, "Username already taken");
   return createUser({ username, password });
 };
 

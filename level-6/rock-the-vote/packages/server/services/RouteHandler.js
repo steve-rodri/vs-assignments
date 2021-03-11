@@ -10,6 +10,9 @@ class RouteHandler {
         const callbackResp = await this.callback(req);
         res.status(this.status).send(callbackResp);
       } catch (err) {
+        res.status(500);
+        if (err.status) res.status(err.status);
+        res.send({ message: err.message });
         next(err);
       }
     };

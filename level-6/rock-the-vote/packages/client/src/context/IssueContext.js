@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import UserContext from "./UserContext";
 import {
   getIssues,
   createIssue,
@@ -12,14 +13,17 @@ const IssueContext = createContext();
 
 export const IssueProvider = ({ children }) => {
   const [issues, setIssues] = useState([]);
+  const { token } = useContext(UserContext);
 
   useEffect(() => {
     const load = async () => {
+      if (!token) return;
       const data = await getIssues();
+      console.log(data);
       if (data) setIssues(data);
     };
     load();
-  }, []);
+  }, [token]);
 
   const add = async data => {
     const issue = await createIssue(data);

@@ -1,7 +1,15 @@
 import React from "react";
+import Header from "../components/Header";
+import IssuesList from "../components/IssuesList";
+import { Grid } from "@chakra-ui/react";
 
 const Home = () => {
-  return <div className="Home">Home</div>;
+  return (
+    <Grid>
+      <Header />
+      <IssuesList />
+    </Grid>
+  );
 };
 
 export default Home;

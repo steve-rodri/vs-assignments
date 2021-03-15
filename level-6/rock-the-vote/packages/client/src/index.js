@@ -6,7 +6,17 @@ import { UserProvider } from "./context/UserContext";
 import { IssueProvider } from "./context/IssueContext";
 import App from "./components/App";
 
-const theme = extendTheme({ config: { initialColorMode: "dark" } });
+const theme = extendTheme({
+  config: { initialColorMode: "dark" },
+  components: {
+    Button: {
+      variants: {
+        upvote: { bgColor: "green" },
+        downvote: { bgColor: "crimson" },
+      },
+    },
+  },
+});
 
 const Root = () => (
   <Router>

@@ -38,36 +38,36 @@ export const getIssue = async id => {
   }
 };
 
-export const deleteIssue = async id => {
+export const deleteIssue = async ({ _id }) => {
   try {
-    const res = await authAxios.delete(`${BASE_URL}/issues/${id}`);
+    const res = await authAxios.delete(`${BASE_URL}/issues/${_id}`);
     return res.data;
   } catch (err) {
     console.log(err);
   }
 };
 
-export const updateIssue = async (id, data) => {
+export const updateIssue = async ({ _id, ...data }) => {
   try {
-    const res = await authAxios.put(`${BASE_URL}/issues/${id}`, data);
+    const res = await authAxios.put(`${BASE_URL}/issues/${_id}`, data);
     return res.data;
   } catch (err) {
     console.log(err);
   }
 };
 
-export const upvoteIssue = async id => {
+export const upvoteIssue = async ({ _id }) => {
   try {
-    const res = await authAxios.put(`${BASE_URL}/issues/${id}/upvote`);
+    const res = await authAxios.put(`${BASE_URL}/issues/${_id}/upvote`);
     return res.data;
   } catch (err) {
     console.log(err);
   }
 };
 
-export const downvoteIssue = async id => {
+export const downvoteIssue = async ({ _id }) => {
   try {
-    const res = await authAxios.put(`${BASE_URL}/issues/${id}/downvote`);
+    const res = await authAxios.put(`${BASE_URL}/issues/${_id}/downvote`);
     return res.data;
   } catch (err) {
     console.log(err);

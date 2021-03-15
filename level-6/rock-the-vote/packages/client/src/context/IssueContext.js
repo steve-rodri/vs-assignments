@@ -19,7 +19,6 @@ export const IssueProvider = ({ children }) => {
     const load = async () => {
       if (!token) return;
       const data = await getIssues();
-      console.log(data);
       if (data) setIssues(data);
     };
     load();
@@ -38,12 +37,12 @@ export const IssueProvider = ({ children }) => {
     await updateIssue(issue);
   };
   const upvote = async issue => {
-    setIssues(prev => prev.map(i => (i._id === issue._id ? issue : i)));
-    await upvoteIssue(issue);
+    const updated = await upvoteIssue(issue);
+    setIssues(prev => prev.map(i => (i._id === updated._id ? updated : i)));
   };
   const downvote = async issue => {
-    setIssues(prev => prev.map(i => (i._id === issue._id ? issue : i)));
-    await downvoteIssue(issue);
+    const updated = await downvoteIssue(issue);
+    setIssues(prev => prev.map(i => (i._id === updated._id ? updated : i)));
   };
 
   const provide = {

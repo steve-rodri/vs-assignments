@@ -1,6 +1,6 @@
 const { model, Schema } = require("mongoose");
 const bcrypt = require("bcrypt");
-const HTTPError = require("../../services/HTTPError");
+const { HTTPError } = require("../../utils");
 
 const userSchema = new Schema({
   username: {

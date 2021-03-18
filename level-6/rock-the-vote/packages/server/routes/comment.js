@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const RouteHandler = require("../services/RouteHandler");
+const { RouteHandler } = require("../utils");
 const {
   createComment,
   updateComment,

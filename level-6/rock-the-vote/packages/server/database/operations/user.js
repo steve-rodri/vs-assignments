@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
-const HTTPError = require("../../services/HTTPError");
-const randomNum = require("../../services/randomNum");
 const { User } = require("../models");
+const { HTTPError, randomNum } = require("../../utils");
 
 const getRandomUsers = async (min, max) => {
   const amount = randomNum(min, max);

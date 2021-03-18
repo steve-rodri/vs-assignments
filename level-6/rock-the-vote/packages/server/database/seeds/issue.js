@@ -1,6 +1,6 @@
 const faker = require("faker");
 const seeder = require("../seeder");
-const randomNum = require("../../services/randomNum");
+const { randomNum } = require("../../utils");
 const { Issue, User } = require("../models");
 const {
   getRandomUser,
@@ -30,7 +30,7 @@ const genIssue = async () => {
   const voters = await getVoters(1, totalUsers);
   return {
     title: faker.lorem.sentence(),
-    description: faker.lorem.paragraph(),
+    description: faker.lorem.paragraphs(),
     creator: await getRandomUser(),
     comments: await getRandomComments(2, totalUsers * 2),
     ...voters,

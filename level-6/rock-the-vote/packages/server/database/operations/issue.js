@@ -25,21 +25,38 @@ const updateIssue = async ({ user, body, params: { id } }) => {
   return issue;
 };
 
-const upvoteIssue = async ({ user, params: { id } }) => {
+const addUpvoteToIssue = async ({ user, params: { id } }) => {
   const data = {
     $addToSet: { upvotedUsers: user._id },
     $pull: { downvotedUsers: user._id },
   };
   const issue = await Issue.findByIdAndUpdate(id, data);
-  console.log(issue);
   if (!issue) throw new HTTPError(404, "Issue not found");
   return issue;
 };
 
-const downvoteIssue = async ({ user, params: { id } }) => {
+const removeUpvoteFromIssue = async ({ user, params: { id } }) => {
+  const data = {
+    $pull: { upvotedUsers: user._id },
+  };
+  const issue = await Issue.findByIdAndUpdate(id, data);
+  if (!issue) throw new HTTPError(404, "Issue not found");
+  return issue;
+};
+
+const addDownvoteToIssue = async ({ user, params: { id } }) => {
   const data = {
     $addToSet: { downvotedUsers: user._id },
     $pull: { upvotedUsers: user._id },
+  };
+  const issue = await Issue.findByIdAndUpdate(id, data);
+  if (!issue) throw new HTTPError(404, "Issue not found");
+  return issue;
+};
+
+const removeDownvoteFromIssue = async ({ user, params: { id } }) => {
+  const data = {
+    $pull: { downvotedUsers: user._id },
   };
   const issue = await Issue.findByIdAndUpdate(id, data);
   if (!issue) throw new HTTPError(404, "Issue not found");
@@ -66,8 +83,10 @@ module.exports = {
   createIssue,
   deleteIssue,
   updateIssue,
-  upvoteIssue,
-  downvoteIssue,
+  addUpvoteToIssue,
+  addDownvoteToIssue,
+  removeUpvoteFromIssue,
+  removeDownvoteFromIssue,
   addCommentToIssue,
   removeCommentFromIssue,
 };

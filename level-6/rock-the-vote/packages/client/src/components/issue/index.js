@@ -29,7 +29,7 @@ export const Tile = props => {
 
 const Header = props => {
   return (
-    <VStack spacing={1} align="stretch">
+    <VStack spacing={1} align="start">
       <Creator {...props} />
       <TitleLink {...props} />
     </VStack>

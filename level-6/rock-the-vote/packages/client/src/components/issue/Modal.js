@@ -25,7 +25,7 @@ export const CreateIssueFromModal = props => {
       <IssueForm
         {...props}
         {...rest}
-        title={"Create Issue"}
+        title={"Create a New Issue"}
         focusRef={focusRef}
       />
     </>
@@ -33,13 +33,13 @@ export const CreateIssueFromModal = props => {
 };
 
 export const EditIssueFromModal = props => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen, ...rest } = useDisclosure();
   const focusRef = useRef();
-  const rest = { ...props, isOpen, onClose, focusRef };
   return (
     <>
       <EditButton onClick={onOpen} />
       <IssueForm
+        {...props}
         {...rest}
         title={"Edit Issue"}
         values={props}

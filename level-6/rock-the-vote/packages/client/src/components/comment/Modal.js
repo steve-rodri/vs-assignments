@@ -11,9 +11,9 @@ import Modal from "../Modal";
 import List from "./List";
 import Form from "./Form";
 
-export const CommentList = ({ title, comments, ...rest }) => (
+export const CommentList = ({ title, ...rest }) => (
   <Modal {...rest} headerContent={title}>
-    <List comments={comments} />
+    <List {...rest} />
   </Modal>
 );
 
@@ -61,9 +61,9 @@ export const EditCommentFromModal = ({ _id, body, ...rest }) => {
   );
 };
 
-export const ViewCommentsFromModal = ({ title, comments }) => {
+export const ViewCommentsFromModal = ({ title, comments, ...rest }) => {
   const { onOpen, onClose, isOpen } = useDisclosure();
-  const props = { title, isOpen, onClose };
+  const props = { title, isOpen, onClose, ...rest };
   return (
     <>
       <CommentsButton number={comments.length} onClick={onOpen} />

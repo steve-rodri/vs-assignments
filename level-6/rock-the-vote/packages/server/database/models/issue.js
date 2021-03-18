@@ -21,11 +21,6 @@ const issueSchema = new Schema({
   downvotedUsers: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
-issueSchema.methods.withoutVoterArrays = function removeArrays() {
-  const { upvotedUsers, downvotedUsers, ...rest } = this.toObject();
-  return rest;
-};
-
 issueSchema.set("toJSON", { virtuals: true });
 issueSchema.virtual("votes").get(function virtualVotes() {
   const up = this.upvotedUsers.length;
@@ -34,8 +29,14 @@ issueSchema.virtual("votes").get(function virtualVotes() {
   return { up, down, total };
 });
 
-issueSchema.pre(/^(save|find|update)/, function popCreator() {
+issueSchema.pre(/^find/, function popCreator(next) {
   this.populate({ path: "creator", select: "-password" });
+  next();
+});
+
+issueSchema.post("save", async function popCreator(doc, next) {
+  await doc.populate({ path: "creator", select: "-password" }).execPopulate();
+  next();
 });
 
 issueSchema.plugin(require("mongoose-autopopulate"));

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Home, Login, Detail } from "../pages";
+import { Issues, Login, Detail } from "../pages";
 import { ProtectedRoute, UnknownRoute } from "./routes";
 import UserContext from "../context/UserContext";
 
@@ -12,7 +12,8 @@ const App = () => {
         path="/login"
         render={props => (token ? <Redirect to="/" /> : <Login {...props} />)}
       />
-      <ProtectedRoute exact path="/" component={Home} token={token} />
+      <ProtectedRoute exact path="/" component={Issues} token={token} />
+      <ProtectedRoute path="/users/:id" component={Issues} token={token} />
       <ProtectedRoute path="/:id" component={Detail} token={token} />
       <UnknownRoute />
     </Switch>

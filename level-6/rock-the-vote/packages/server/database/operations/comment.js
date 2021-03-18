@@ -25,10 +25,10 @@ const updateComment = async ({ user, body, params: { id } }) => {
   return comment;
 };
 
-const deleteComment = async ({ user, body, params: { id } }) => {
-  if (!body.issueId) throw new HTTPError(403, "No issueId");
+const deleteComment = async ({ user, params: { id }, query: { issue } }) => {
+  if (!issue) throw new HTTPError(403, "No issueId");
   await Comment.findOneAndDelete({ _id: id, creator: user._id });
-  await removeCommentFromIssue(body.issueId, id);
+  await removeCommentFromIssue(issue, id);
   return "Successfully deleted comment";
 };
 

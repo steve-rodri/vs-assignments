@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { RootProvider } from "./context";
 import App from "./components/App";
 
 const Root = () => (
-  <Router>
+  <BrowserRouter>
     <RootProvider>
       <App />
     </RootProvider>
-  </Router>
+  </BrowserRouter>
 );
 
 ReactDOM.render(<Root />, document.getElementById("root"));

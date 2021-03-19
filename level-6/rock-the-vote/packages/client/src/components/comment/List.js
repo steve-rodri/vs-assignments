@@ -1,5 +1,6 @@
 import React from "react";
-import { VStack } from "@chakra-ui/react";
+import { VStack, Divider } from "@chakra-ui/react";
+import { SectionHeader } from "./small";
 import Comment from ".";
 
 const List = ({ comments, issueId }) => {
@@ -8,6 +9,16 @@ const List = ({ comments, issueId }) => {
       {comments.map(comment => (
         <Comment key={comment._id} {...comment} issueId={issueId} />
       ))}
+    </VStack>
+  );
+};
+
+export const CommentListWithHeader = props => {
+  return (
+    <VStack w="full" align="stretch">
+      <SectionHeader {...props} />
+      <Divider />
+      <List {...props} />
     </VStack>
   );
 };

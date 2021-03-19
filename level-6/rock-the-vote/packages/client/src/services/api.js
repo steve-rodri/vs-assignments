@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loadState } from "../helpers/persistState";
+import { loadState } from "../utils/persistState";
 
 const authAxios = axios.create();
 const BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;

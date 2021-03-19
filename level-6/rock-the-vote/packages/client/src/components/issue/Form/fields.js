@@ -18,8 +18,8 @@ export const Title = ({ focusRef }) => (
         <FormLabel htmlFor="title">Title</FormLabel>
         <Input
           {...field}
-          ref={focusRef}
           id="title"
+          ref={focusRef}
           type="text"
           variant="filled"
         />

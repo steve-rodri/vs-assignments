@@ -8,20 +8,17 @@ import Form from "../../Form";
 import schema from "./validation";
 
 export const IssueForm = ({ values, focusRef, closeModal }) => {
+  const initialValues = values || { title: "", description: "" };
+  const { create, update } = useContext(IssueContext);
   const history = useHistory();
-  const { add, update } = useContext(IssueContext);
-  const initialValues = values || { body: "" };
 
   const onSubmit = async (values, actions) => {
-    if (values._id) {
-      await update(values);
-    } else {
-      const issue = await add(values);
-      closeModal();
-      history.push(`/${issue._id}`);
-    }
+    let newIssue;
+    if (values._id) await update(values);
+    else newIssue = await create(values);
     actions.setSubmitting(false);
     closeModal();
+    if (newIssue) history.push(`/${newIssue._id}`);
   };
 
   return (
@@ -35,10 +32,10 @@ export const IssueForm = ({ values, focusRef, closeModal }) => {
   );
 };
 
-const Fields = ({ focusRef }) => {
+const Fields = props => {
   return (
     <VStack spacing={5} align="flex-start">
-      <Title focusRef={focusRef} />
+      <Title {...props} />
       <Description />
       <SubmitButton />
     </VStack>

@@ -20,7 +20,7 @@ export const IssueProvider = ({ children }) => {
   const [issues, setIssues] = useState([]);
   const { token } = useContext(UserContext);
 
-  const add = async data => {
+  const create = async data => {
     const issue = await createIssue(data);
     setIssues(prev => [...prev, issue]);
     return issue;
@@ -81,7 +81,7 @@ export const IssueProvider = ({ children }) => {
 
   const provide = {
     issues,
-    add,
+    create,
     remove,
     update,
     addUpvote,

@@ -3,7 +3,7 @@ import { VStack } from "@chakra-ui/react";
 import { IssueContext } from "../../context";
 import Issue from ".";
 
-const List = ({ match }) => {
+export const List = ({ match }) => {
   let { issues } = useContext(IssueContext);
   if (match.params.id) {
     issues = issues.filter(issue => issue.creator._id === match.params.id);

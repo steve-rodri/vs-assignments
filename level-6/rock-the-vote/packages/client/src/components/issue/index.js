@@ -13,4 +13,7 @@ export const Issue = props => {
   );
 };
 
+export * from "./Detail";
+export * from "./List";
+export * from "./Modal";
 export default Issue;

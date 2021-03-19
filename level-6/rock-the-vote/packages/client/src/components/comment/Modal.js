@@ -1,13 +1,8 @@
 import React, { useRef, useContext } from "react";
-import { useDisclosure } from "@chakra-ui/react";
+import { useDisclosure, useBreakpointValue } from "@chakra-ui/react";
 import IssueContext from "../../context/IssueContext";
-import {
-  AddButton,
-  EditButton,
-  DeleteButton,
-  CommentsButton,
-} from "../buttons";
-import Modal from "../Modal";
+import { AddButton, EditButton, TrashButton, CommentsButton } from "../buttons";
+import Modal, { ConfirmDeletion } from "../Modal";
 import List from "./List";
 import Form from "./Form";
 
@@ -63,17 +58,29 @@ export const EditCommentFromModal = ({ _id, body, ...rest }) => {
 
 export const ViewCommentsFromModal = ({ title, comments, ...rest }) => {
   const { onOpen, onClose, isOpen } = useDisclosure();
+  const show = useBreakpointValue({ base: false, sm: true });
   const props = { title, isOpen, onClose, ...rest };
   return (
     <>
-      <CommentsButton number={comments.length} onClick={onOpen} />
+      {show && <CommentsButton number={comments.length} onClick={onOpen} />}
       <CommentList {...props} comments={comments} />
     </>
   );
 };
 
-export const DeleteComment = ({ _id, issueId }) => {
+export const DeleteCommentFromModal = ({ _id, issueId }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { removeComment } = useContext(IssueContext);
-  const onDelete = async () => removeComment(_id, issueId);
-  return <DeleteButton onClick={onDelete} />;
+  const focusRef = useRef();
+  const onDelete = async () => {
+    await removeComment(_id, issueId);
+    onClose();
+  };
+  const props = { onDelete, onClose, isOpen, focusRef };
+  return (
+    <>
+      <TrashButton onClick={onOpen} />
+      <ConfirmDeletion {...props} />
+    </>
+  );
 };

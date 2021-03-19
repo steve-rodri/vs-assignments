@@ -11,20 +11,31 @@ import {
 export const AddButton = ({ onClick }) => (
   <IconButton aria-label="add" icon={<AddIcon />} onClick={onClick} />
 );
-export const DeleteButton = ({ onClick }) => (
-  <IconButton aria-label="delete" icon={<DeleteIcon />} onClick={onClick} />
+export const TrashButton = ({ onClick }) => (
+  <IconButton aria-label="trash" icon={<DeleteIcon />} onClick={onClick} />
 );
 export const EditButton = ({ onClick }) => (
   <IconButton aria-label="edit" icon={<EditIcon />} onClick={onClick} />
 );
 
-export const CommentsButton = ({ number, onClick }) => (
+export const DeleteButton = ({ onClick, focusRef }) => (
+  <Button
+    variant="delete"
+    icon={<DeleteIcon />}
+    onClick={onClick}
+    ref={focusRef}
+  >
+    <Text>DELETE</Text>
+  </Button>
+);
+
+export const CommentsButton = ({ onClick, number }) => (
   <Button onClick={onClick} leftIcon={<ChatIcon />}>
     <Text>{number}</Text>
   </Button>
 );
 
-export const UpvoteButton = ({ votes, highlight, onClick }) => (
+export const UpvoteButton = ({ onClick, votes, highlight }) => (
   <Button
     onClick={onClick}
     variant={highlight ? "upvote" : null}
@@ -34,7 +45,7 @@ export const UpvoteButton = ({ votes, highlight, onClick }) => (
   </Button>
 );
 
-export const DownvoteButton = ({ votes, highlight, onClick }) => (
+export const DownvoteButton = ({ onClick, votes, highlight }) => (
   <Button
     onClick={onClick}
     variant={highlight ? "downvote" : null}

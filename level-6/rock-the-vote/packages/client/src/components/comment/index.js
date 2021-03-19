@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { VStack, HStack, Divider, Heading, Spacer } from "@chakra-ui/react";
 import { Creator, Body, Date } from "./sub";
+import UserContext from "../../context/UserContext";
+import List from "./List";
 import {
   AddCommentFromModal,
   EditCommentFromModal,
-  DeleteComment,
+  DeleteCommentFromModal,
 } from "./Modal";
-import UserContext from "../../context/UserContext";
-import List from "./List";
 
 export const Comment = props => {
   return (
@@ -35,7 +35,7 @@ export const CommentButtons = props => {
   return (
     <HStack>
       <EditCommentFromModal {...props} />
-      <DeleteComment {...props} />
+      <DeleteCommentFromModal {...props} />
     </HStack>
   );
 };
@@ -52,7 +52,7 @@ export const CommentSectionHeader = props => {
 
 export const CommentListWithHeader = props => {
   return (
-    <VStack minW={300} align="stretch">
+    <VStack w="full" align="stretch">
       <CommentSectionHeader {...props} />
       <Divider />
       <List {...props} />

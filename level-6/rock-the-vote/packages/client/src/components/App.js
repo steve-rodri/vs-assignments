@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { ProtectedRoute, UnknownRoute } from "./routes";
-import { Issues, Login, Detail } from "../pages";
+import { Issues, Login, IssueDetail } from "../pages";
 import { UserContext } from "../context";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
       />
       <ProtectedRoute exact path="/" component={Issues} token={token} />
       <ProtectedRoute path="/users/:id" component={Issues} token={token} />
-      <ProtectedRoute path="/:id" component={Detail} token={token} />
+      <ProtectedRoute path="/:id" component={IssueDetail} token={token} />
       <UnknownRoute />
     </Switch>
   );

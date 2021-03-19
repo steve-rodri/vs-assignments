@@ -5,7 +5,7 @@ import IssueContext from "../../context/IssueContext";
 import Modal, { ConfirmDeletion } from "../Modal";
 import Form from "./Form";
 
-export const IssueForm = ({ title, focusRef, onClose, ...rest }) => (
+export const IssueFormInModal = ({ title, focusRef, onClose, ...rest }) => (
   <Modal
     {...rest}
     onClose={onClose}
@@ -16,13 +16,13 @@ export const IssueForm = ({ title, focusRef, onClose, ...rest }) => (
   </Modal>
 );
 
-export const CreateIssueFromModal = props => {
+export const CreateIssueFromModalButton = props => {
   const { onOpen, ...rest } = useDisclosure();
   const focusRef = useRef();
   return (
     <>
       <AddButton onClick={onOpen} />
-      <IssueForm
+      <IssueFormInModal
         {...props}
         {...rest}
         title={"Create a New Issue"}
@@ -32,13 +32,13 @@ export const CreateIssueFromModal = props => {
   );
 };
 
-export const EditIssueFromModal = props => {
+export const EditIssueFromModalButton = props => {
   const { onOpen, ...rest } = useDisclosure();
   const focusRef = useRef();
   return (
     <>
       <EditButton onClick={onOpen} />
-      <IssueForm
+      <IssueFormInModal
         {...props}
         {...rest}
         title={"Edit Issue"}
@@ -49,7 +49,7 @@ export const EditIssueFromModal = props => {
   );
 };
 
-export const DeleteIssueFromModal = issue => {
+export const DeleteIssueFromModalButton = issue => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { remove } = useContext(IssueContext);
   const focusRef = useRef();

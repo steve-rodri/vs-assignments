@@ -1,6 +1,6 @@
 import React from "react";
-import { Flex, Spacer, HStack, Heading } from "@chakra-ui/react";
-import { CreateIssueFromModal } from "./issue/Modal";
+import { Flex, HStack, Heading } from "@chakra-ui/react";
+import { CreateIssueFromModalButton } from "./issue/Modal";
 import NavLink from "./NavLink";
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Headline = () => (
 const NavBar = () => {
   return (
     <HStack spacing="10" ml="auto">
-      <CreateIssueFromModal />
+      <CreateIssueFromModalButton />
     </HStack>
   );
 };

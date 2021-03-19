@@ -1,8 +1,8 @@
 import React, { useRef, useContext } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import { AddButton, EditButton, DeleteButton } from "../buttons";
+import { AddButton, EditButton, TrashButton } from "../buttons";
 import IssueContext from "../../context/IssueContext";
-import Modal from "../Modal";
+import Modal, { ConfirmDeletion } from "../Modal";
 import Form from "./Form";
 
 export const IssueForm = ({ title, focusRef, onClose, ...rest }) => (
@@ -49,8 +49,19 @@ export const EditIssueFromModal = props => {
   );
 };
 
-export const DeleteIssue = issue => {
+export const DeleteIssueFromModal = issue => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { remove } = useContext(IssueContext);
-  const onDelete = async () => remove(issue);
-  return <DeleteButton onClick={onDelete} />;
+  const focusRef = useRef();
+  const onDelete = async () => {
+    await remove(issue);
+    onClose();
+  };
+  const props = { onDelete, onClose, isOpen, focusRef };
+  return (
+    <>
+      <TrashButton onClick={onOpen} />
+      <ConfirmDeletion {...props} />
+    </>
+  );
 };

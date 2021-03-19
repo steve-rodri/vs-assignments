@@ -5,7 +5,7 @@ import Issue from ".";
 
 const Container = props => {
   return (
-    <VStack w="100%" maxW={700} m="auto" spacing={100} pt={9} pb={40} px={5}>
+    <VStack w="full" m="auto" pt={9} pb={20} px={5} maxW={700} spacing={100}>
       <Issue {...props} />
       <CommentListWithHeader {...props} issueId={props._id} />
     </VStack>

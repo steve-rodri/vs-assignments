@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { VStack } from "@chakra-ui/react";
 import IssueContext from "../../context/IssueContext";
-import { Tile } from ".";
+import Issue from ".";
 
 const List = ({ match }) => {
   let { issues } = useContext(IssueContext);
@@ -9,9 +9,9 @@ const List = ({ match }) => {
     issues = issues.filter(issue => issue.creator._id === match.params.id);
   }
   return (
-    <VStack p={50} spacing={50} align="stretch">
+    <VStack w="full" m="auto" px={5} maxW={700} spacing={50} align="stretch">
       {issues.map(issue => (
-        <Tile key={issue._id} {...issue} />
+        <Issue key={issue._id} {...issue} linkTitle showCommentButton />
       ))}
     </VStack>
   );

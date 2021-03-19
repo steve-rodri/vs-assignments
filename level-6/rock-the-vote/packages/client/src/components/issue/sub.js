@@ -6,13 +6,19 @@ import IssueContext from "../../context/IssueContext";
 import NavLink from "../NavLink";
 
 export const Title = ({ title }) => {
-  return <Heading>{title}</Heading>;
+  return (
+    <Heading size="lg" variant="title">
+      {title}
+    </Heading>
+  );
 };
 
 export const TitleLink = ({ title, _id }) => {
   return (
     <NavLink to={`/${_id}`}>
-      <Heading>{title}</Heading>
+      <Heading size="lg" variant="title">
+        {title}
+      </Heading>
     </NavLink>
   );
 };
@@ -20,13 +26,13 @@ export const TitleLink = ({ title, _id }) => {
 export const Creator = ({ creator }) => {
   return (
     <NavLink to={`/users/${creator._id}`}>
-      <Text>{`@${creator.username}`}</Text>
+      <Text variant="username">{`@${creator.username}`}</Text>
     </NavLink>
   );
 };
 
 export const Description = ({ description }) => {
-  return <Text>{description}</Text>;
+  return <Text variant="body">{description}</Text>;
 };
 
 export const Votes = props => {

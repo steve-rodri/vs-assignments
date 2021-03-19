@@ -1,60 +1,48 @@
 import React, { useContext } from "react";
-import { HStack, VStack, Divider, Spacer } from "@chakra-ui/react";
+import { Flex, HStack, VStack, Divider, Spacer } from "@chakra-ui/react";
 import { Title, TitleLink, Description, Creator, Votes } from "./sub";
 import { ViewCommentsFromModal } from "../comment/Modal";
-import { EditIssueFromModal, DeleteIssue } from "../issue/Modal";
+import { EditIssueFromModal, DeleteIssueFromModal } from "../issue/Modal";
 import UserContext from "../../context/UserContext";
 
 export const Issue = props => {
   return (
-    <VStack minW={300} align="start">
-      <Title {...props} />
-      <Divider />
-      <Description {...props} />
-      <Footer {...props} />
-    </VStack>
-  );
-};
-
-export const Tile = props => {
-  return (
-    <VStack spacing={2} align="stretch">
+    <VStack w="full" align="start">
       <Header {...props} />
       <Divider />
       <Description {...props} />
-      <Footer {...props} showCommentButton />
+      <Buttons {...props} />
     </VStack>
   );
 };
 
-const Header = props => {
+const Header = ({ linkTitle, ...rest }) => {
   return (
     <VStack spacing={1} align="start">
-      <Creator {...props} />
-      <TitleLink {...props} />
+      <Creator {...rest} />
+      {linkTitle ? <TitleLink {...rest} /> : <Title {...rest} />}
     </VStack>
   );
 };
 
-const Footer = ({ showCommentButton, ...rest }) => {
+const Buttons = ({ showCommentButton, ...rest }) => {
   return (
-    <HStack spacing={5} justify="end">
+    <Flex w="full">
       <Votes {...rest} />
-      {!showCommentButton && <Spacer />}
-      <Buttons {...rest} />
+      <Modifiers {...rest} />
       <Spacer />
       {showCommentButton && <ViewCommentsFromModal {...rest} />}
-    </HStack>
+    </Flex>
   );
 };
 
-export const Buttons = props => {
+const Modifiers = props => {
   const { user } = useContext(UserContext);
   if (user._id !== props.creator._id) return null;
   return (
-    <HStack>
+    <HStack ml={5}>
       <EditIssueFromModal {...props} />
-      <DeleteIssue {...props} />
+      <DeleteIssueFromModal {...props} />
     </HStack>
   );
 };

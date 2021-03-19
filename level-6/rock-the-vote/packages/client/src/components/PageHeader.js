@@ -5,9 +5,8 @@ import NavLink from "./NavLink";
 
 const Header = () => {
   return (
-    <Flex py="8" px="12">
+    <Flex py={{ base: "4", md: "8" }} px={{ base: "5", md: "12" }}>
       <Headline />
-      <Spacer />
       <NavBar />
     </Flex>
   );
@@ -15,14 +14,13 @@ const Header = () => {
 
 const Headline = () => (
   <NavLink to="/">
-    <Heading>Rock the Vote</Heading>
+    <Heading size="xl">Rock the Vote</Heading>
   </NavLink>
 );
 
 const NavBar = () => {
   return (
-    <HStack spacing="10">
-      <NavLink to="/">Home</NavLink>
+    <HStack spacing="10" ml="auto">
       <CreateIssueFromModal />
     </HStack>
   );

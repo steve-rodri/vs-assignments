@@ -5,7 +5,7 @@ import { Grid } from "@chakra-ui/react";
 
 const Issues = props => {
   return (
-    <Grid>
+    <Grid pb={20}>
       <Header />
       <IssuesList {...props} />
     </Grid>

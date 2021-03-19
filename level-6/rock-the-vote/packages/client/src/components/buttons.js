@@ -18,6 +18,27 @@ export const EditButton = ({ onClick }) => (
   <IconButton aria-label="edit" icon={<EditIcon />} onClick={onClick} />
 );
 
+export const SubmitButton = ({ type, variant }) => {
+  return (
+    <Button type="submit" variant={variant} size="lg">
+      {type || "SUBMIT"}
+    </Button>
+  );
+};
+export const AlreadySignedUpButton = ({ type, switchType }) => {
+  return (
+    <Button size="sm" variant="link" onClick={switchType}>
+      {type === "Login" ? "Sign Up instead..." : "Already Signed Up?"}
+    </Button>
+  );
+};
+
+export const CommentsButton = ({ onClick, number }) => (
+  <Button onClick={onClick} leftIcon={<ChatIcon />}>
+    <Text>{number}</Text>
+  </Button>
+);
+
 export const DeleteButton = ({ onClick, focusRef }) => (
   <Button
     variant="delete"
@@ -26,12 +47,6 @@ export const DeleteButton = ({ onClick, focusRef }) => (
     ref={focusRef}
   >
     <Text>DELETE</Text>
-  </Button>
-);
-
-export const CommentsButton = ({ onClick, number }) => (
-  <Button onClick={onClick} leftIcon={<ChatIcon />}>
-    <Text>{number}</Text>
   </Button>
 );
 
@@ -44,7 +59,6 @@ export const UpvoteButton = ({ onClick, votes, highlight }) => (
     <Text>{votes.up}</Text>
   </Button>
 );
-
 export const DownvoteButton = ({ onClick, votes, highlight }) => (
   <Button
     onClick={onClick}
@@ -54,19 +68,3 @@ export const DownvoteButton = ({ onClick, votes, highlight }) => (
     <Text>{votes.down}</Text>
   </Button>
 );
-
-export const SubmitButton = ({ type, variant }) => {
-  return (
-    <Button type="submit" variant={variant} size="lg">
-      {type || "SUBMIT"}
-    </Button>
-  );
-};
-
-export const AlreadySignedUpButton = ({ type, switchType }) => {
-  return (
-    <Button size="sm" variant="link" onClick={switchType}>
-      {type === "Login" ? "Sign Up instead..." : "Already Signed Up?"}
-    </Button>
-  );
-};

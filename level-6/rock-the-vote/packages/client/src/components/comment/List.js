@@ -1,6 +1,6 @@
 import React from "react";
-import Comment from ".";
 import { VStack } from "@chakra-ui/react";
+import Comment from ".";
 
 const List = ({ comments, issueId }) => {
   return (

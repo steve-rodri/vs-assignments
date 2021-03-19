@@ -55,7 +55,7 @@ const Buttons = props => {
 
 const DatabaseErrorMessage = ({ error }) => {
   if (!error) return null;
-  return <Text color="crimson">{error}</Text>;
+  return <Text variant="error">{error}</Text>;
 };
 
 export default LoginForm;

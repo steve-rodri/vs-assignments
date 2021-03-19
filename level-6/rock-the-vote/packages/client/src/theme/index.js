@@ -13,7 +13,7 @@ export const theme = extendTheme({
     Text: {
       variants: {
         body: { color: "gray.400" },
-        username: { color: "orange.50" },
+        error: { color: "red.700" },
       },
     },
   },

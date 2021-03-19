@@ -4,7 +4,7 @@ import { ConfirmDeletion } from "../../Modal";
 import { IssueContext } from "../../../context";
 import { TrashButton } from "../../buttons";
 
-export const DeleteCommentFromModal = ({ _id, issueId }) => {
+export const DeleteCommentFromModalButton = ({ _id, issueId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { removeComment } = useContext(IssueContext);
   const focusRef = useRef();

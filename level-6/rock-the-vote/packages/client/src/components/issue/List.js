@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { VStack } from "@chakra-ui/react";
-import IssueContext from "../../context/IssueContext";
+import { IssueContext } from "../../context";
 import Issue from ".";
 
 const List = ({ match }) => {

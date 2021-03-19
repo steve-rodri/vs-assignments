@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { VStack } from "@chakra-ui/react";
-import { Body } from "./fields";
+import { IssueContext } from "../../../context";
 import { SubmitButton } from "../../buttons";
-import IssueContext from "../../../context/IssueContext";
+import { Body } from "./fields";
 import Form from "../../Form";
 import schema from "./validation";
 

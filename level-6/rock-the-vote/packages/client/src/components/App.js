@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Issues, Login, Detail } from "../pages";
 import { ProtectedRoute, UnknownRoute } from "./routes";
-import UserContext from "../context/UserContext";
+import { Issues, Login, Detail } from "../pages";
+import { UserContext } from "../context";
 
 const App = () => {
   const { token } = useContext(UserContext);

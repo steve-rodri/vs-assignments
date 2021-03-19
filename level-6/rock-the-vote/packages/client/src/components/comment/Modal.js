@@ -1,18 +1,18 @@
 import React, { useRef, useContext } from "react";
 import { useDisclosure, useBreakpointValue } from "@chakra-ui/react";
-import IssueContext from "../../context/IssueContext";
 import { AddButton, EditButton, TrashButton, CommentsButton } from "../buttons";
+import { IssueContext } from "../../context";
 import Modal, { ConfirmDeletion } from "../Modal";
 import List from "./List";
 import Form from "./Form";
 
-export const CommentList = ({ title, ...rest }) => (
+export const CommentListInModal = ({ title, ...rest }) => (
   <Modal {...rest} headerContent={title}>
     <List {...rest} />
   </Modal>
 );
 
-const CommentForm = ({ title, focusRef, onClose, ...rest }) => (
+const CommentFormInModal = ({ title, focusRef, onClose, ...rest }) => (
   <Modal
     {...rest}
     onClose={onClose}
@@ -23,13 +23,13 @@ const CommentForm = ({ title, focusRef, onClose, ...rest }) => (
   </Modal>
 );
 
-export const AddCommentFromModal = props => {
+export const AddCommentFromModalButton = props => {
   const { onOpen, ...rest } = useDisclosure();
   const focusRef = useRef();
   return (
     <>
       <AddButton onClick={onOpen} />
-      <CommentForm
+      <CommentFormInModal
         {...props}
         {...rest}
         title={"Add Comment"}
@@ -39,14 +39,14 @@ export const AddCommentFromModal = props => {
   );
 };
 
-export const EditCommentFromModal = ({ _id, body, ...rest }) => {
+export const EditCommentFromModalButton = ({ _id, body, ...rest }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const focusRef = useRef();
   const props = { ...rest, isOpen, onClose, focusRef };
   return (
     <>
       <EditButton onClick={onOpen} />
-      <CommentForm
+      <CommentFormInModal
         {...props}
         title={"Edit Comment"}
         values={{ _id, body }}
@@ -56,14 +56,14 @@ export const EditCommentFromModal = ({ _id, body, ...rest }) => {
   );
 };
 
-export const ViewCommentsFromModal = ({ title, comments, ...rest }) => {
+export const ViewCommentsFromModalButton = ({ title, comments, ...rest }) => {
   const { onOpen, onClose, isOpen } = useDisclosure();
   const show = useBreakpointValue({ base: false, sm: true });
   const props = { title, isOpen, onClose, ...rest };
   return (
     <>
       {show && <CommentsButton number={comments.length} onClick={onOpen} />}
-      <CommentList {...props} comments={comments} />
+      <CommentListInModal {...props} comments={comments} />
     </>
   );
 };

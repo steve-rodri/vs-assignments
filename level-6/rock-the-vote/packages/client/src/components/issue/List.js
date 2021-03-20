@@ -9,7 +9,7 @@ export const List = ({ match }) => {
     issues = issues.filter(issue => issue.creator._id === match.params.id);
   }
   return (
-    <VStack w="full" m="auto" px={5} maxW={700} spacing={50} align="stretch">
+    <VStack w="full" m="auto" maxW={1200} spacing={50} align="stretch">
       {issues.map(issue => (
         <Issue key={issue._id} {...issue} linkTitle showCommentsButton />
       ))}

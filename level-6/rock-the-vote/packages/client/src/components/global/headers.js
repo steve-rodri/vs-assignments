@@ -1,14 +1,16 @@
 import React from "react";
-import { Flex, HStack, Heading } from "@chakra-ui/react";
+import { Center, Flex, HStack, Heading } from "@chakra-ui/react";
 import { CreateIssueInModalButton } from "../issue/buttons";
 import Link from "../Link";
 
 export const PageHeader = () => {
   return (
-    <Flex py={{ base: "4", md: "8" }} px={{ base: "5", md: "12" }}>
-      <Headline />
-      <NavBar />
-    </Flex>
+    <Center py={[4, 8, 12, 16, 20]}>
+      <Flex w="full" maxW={1200}>
+        <Headline />
+        <NavBar />
+      </Flex>
+    </Center>
   );
 };
 

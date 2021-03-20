@@ -9,9 +9,9 @@ const Detail = ({ match }) => {
   const issue = issues.find(i => i._id === match.params.id);
   if (!issue) return <Redirect to="/" />;
   return (
-    <Grid>
+    <Grid px={[5, 5, 50, 100]}>
       <PageHeader />
-      <VStack w="full" m="auto" py={10} px={5} maxW={700} spacing={100}>
+      <VStack w="full" m="auto" maxW={1200} spacing={100}>
         <Issue {...issue} />
         <CommentListWithHeader {...issue} issueId={issue._id} />
       </VStack>

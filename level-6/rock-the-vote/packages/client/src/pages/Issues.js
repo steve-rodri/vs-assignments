@@ -4,7 +4,7 @@ import { PageHeader, IssueList } from "../components";
 
 const Issues = props => {
   return (
-    <Grid pb={20}>
+    <Grid px={[5, 5, 50, 100]} pb={20}>
       <PageHeader />
       <IssueList {...props} />
     </Grid>

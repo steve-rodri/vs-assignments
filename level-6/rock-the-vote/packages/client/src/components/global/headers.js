@@ -1,9 +1,9 @@
 import React from "react";
 import { Flex, HStack, Heading } from "@chakra-ui/react";
-import { CreateIssueFromModalButton } from "./issue/Modal";
-import NavLink from "./NavLink";
+import { CreateIssueInModalButton } from "../issue/buttons";
+import Link from "../Link";
 
-const Header = () => {
+export const PageHeader = () => {
   return (
     <Flex py={{ base: "4", md: "8" }} px={{ base: "5", md: "12" }}>
       <Headline />
@@ -13,17 +13,17 @@ const Header = () => {
 };
 
 const Headline = () => (
-  <NavLink to="/">
+  <Link to="/">
     <Heading size="xl">Rock the Vote</Heading>
-  </NavLink>
+  </Link>
 );
 
 const NavBar = () => {
   return (
     <HStack spacing="10" ml="auto">
-      <CreateIssueFromModalButton />
+      <CreateIssueInModalButton />
     </HStack>
   );
 };
 
-export default Header;
+export default PageHeader;

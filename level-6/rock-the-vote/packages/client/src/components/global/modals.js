@@ -21,7 +21,7 @@ export const Modal = ({ headerContent, children, ...rest }) => (
   </ChakraModal>
 );
 
-export const ConfirmDeletion = ({ onDelete, focusRef, ...rest }) => {
+export const ConfirmDeletionModal = ({ onDelete, focusRef, ...rest }) => {
   return (
     <Modal
       headerContent={"Confirm Deletion"}

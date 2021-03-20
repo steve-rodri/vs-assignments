@@ -1,18 +1,18 @@
 import React, { useRef } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import { AddButton } from "../../buttons";
-import { IssueFormInModal } from ".";
+import { AddButton } from "../../global/buttons";
+import { CommentFormInModal } from "../modals";
 
-export const CreateIssueFromModalButton = props => {
+export const CreateCommentInModalButton = props => {
   const { onOpen, ...rest } = useDisclosure();
   const focusRef = useRef();
   return (
     <>
       <AddButton onClick={onOpen} />
-      <IssueFormInModal
+      <CommentFormInModal
         {...props}
         {...rest}
-        title={"Create a New Issue"}
+        title={"Add Comment"}
         focusRef={focusRef}
       />
     </>

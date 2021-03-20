@@ -1,7 +1,7 @@
 import React from "react";
-import Modal from "../../Modal";
-import List from "../List";
-import Form from "../Form";
+import Modal from "../global/modals";
+import List from "./list";
+import Form from "./form";
 
 export const CommentListInModal = ({ title, ...rest }) => (
   <Modal {...rest} headerContent={title}>
@@ -19,8 +19,3 @@ export const CommentFormInModal = ({ title, focusRef, onClose, ...rest }) => (
     <Form {...rest} focusRef={focusRef} closeModal={onClose} />
   </Modal>
 );
-
-export * from "./create";
-export * from "./delete";
-export * from "./edit";
-export * from "./view";

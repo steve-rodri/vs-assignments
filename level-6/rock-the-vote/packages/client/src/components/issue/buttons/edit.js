@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import { EditButton } from "../../buttons";
-import { IssueFormInModal } from ".";
+import { EditButton } from "../../global/buttons";
+import { IssueFormInModal } from "../modals";
 
-export const EditIssueFromModalButton = props => {
+export const EditIssueInModalButton = props => {
   const { onOpen, ...rest } = useDisclosure();
   const focusRef = useRef();
   return (

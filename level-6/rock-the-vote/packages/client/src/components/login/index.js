@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Text, VStack } from "@chakra-ui/react";
 import { Username, Password } from "./fields";
-import { SubmitButton, AlreadySignedUpButton } from "../buttons";
+import { SubmitButton, AlreadySignedUpButton } from "../global/buttons";
 import UserContext from "../../context/UserContext";
 import Form from "../Form";
 import schema from "./validation";

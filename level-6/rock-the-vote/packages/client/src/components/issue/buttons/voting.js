@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { HStack } from "@chakra-ui/react";
-import { UserContext, IssueContext } from "../../context";
-import { UpvoteButton, DownvoteButton } from "../buttons";
+import { UpvoteButton, DownvoteButton } from "../../global/buttons";
+import { UserContext, IssueContext } from "../../../context";
 
 export const VotingButtons = props => {
   const { user } = useContext(UserContext);

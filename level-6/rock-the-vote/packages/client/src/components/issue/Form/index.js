@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { VStack } from "@chakra-ui/react";
 import { Title, Description } from "./fields";
-import { SubmitButton } from "../../buttons";
+import { SubmitButton } from "../../global/buttons";
 import IssueContext from "../../../context/IssueContext";
 import Form from "../../Form";
 import schema from "./validation";

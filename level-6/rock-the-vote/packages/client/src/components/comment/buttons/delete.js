@@ -1,10 +1,10 @@
 import React, { useRef, useContext } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import { ConfirmDeletion } from "../../Modal";
+import { ConfirmDeletionModal } from "../../global/modals";
+import { TrashButton } from "../../global/buttons";
 import { IssueContext } from "../../../context";
-import { TrashButton } from "../../buttons";
 
-export const DeleteCommentFromModalButton = ({ _id, issueId }) => {
+export const DeleteCommentInModalButton = ({ _id, issueId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { removeComment } = useContext(IssueContext);
   const focusRef = useRef();
@@ -16,7 +16,7 @@ export const DeleteCommentFromModalButton = ({ _id, issueId }) => {
   return (
     <>
       <TrashButton onClick={onOpen} />
-      <ConfirmDeletion {...props} />
+      <ConfirmDeletionModal {...props} />
     </>
   );
 };

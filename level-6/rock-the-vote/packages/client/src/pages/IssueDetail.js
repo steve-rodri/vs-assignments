@@ -1,18 +1,20 @@
 import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { Grid } from "@chakra-ui/react";
+import { Grid, VStack } from "@chakra-ui/react";
+import { Issue, PageHeader, CommentListWithHeader } from "../components";
 import { IssueContext } from "../context";
-import PageHeader from "../components/PageHeader";
-import IssueDetail from "../components/issue/Detail";
 
 const Detail = ({ match }) => {
   const { issues } = useContext(IssueContext);
-  const issue = issues.find(issue => issue._id === match.params.id);
+  const issue = issues.find(i => i._id === match.params.id);
   if (!issue) return <Redirect to="/" />;
   return (
     <Grid>
       <PageHeader />
-      <IssueDetail {...issue} />
+      <VStack w="full" m="auto" py={10} px={5} maxW={700} spacing={100}>
+        <Issue {...issue} />
+        <CommentListWithHeader {...issue} issueId={issue._id} />
+      </VStack>
     </Grid>
   );
 };

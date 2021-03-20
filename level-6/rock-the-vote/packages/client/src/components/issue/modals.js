@@ -1,6 +1,6 @@
 import React from "react";
-import Modal from "../../Modal";
-import Form from "../Form";
+import Modal from "../global/modals";
+import Form from "./form";
 
 export const IssueFormInModal = ({ title, focusRef, onClose, ...rest }) => (
   <Modal
@@ -12,7 +12,3 @@ export const IssueFormInModal = ({ title, focusRef, onClose, ...rest }) => (
     <Form {...rest} focusRef={focusRef} closeModal={onClose} />
   </Modal>
 );
-
-export * from "./create";
-export * from "./delete";
-export * from "./edit";

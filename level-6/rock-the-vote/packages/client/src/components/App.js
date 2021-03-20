@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { ProtectedRoute, UnknownRoute } from "./routes";
+import { ProtectedRoute, UnknownRoute } from "../components";
 import { Issues, Login, IssueDetail } from "../pages";
 import { UserContext } from "../context";
 

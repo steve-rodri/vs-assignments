@@ -1,19 +1,15 @@
-import React from "react";
-import { VStack, Divider } from "@chakra-ui/react";
-import { Header, Description, ButtonGroup } from "./small";
+export { default as Issue } from "./self";
 
-export const Issue = props => {
-  return (
-    <VStack w="full" align="start">
-      <Header {...props} />
-      <Divider />
-      <Description {...props} />
-      <ButtonGroup {...props} />
-    </VStack>
-  );
-};
+export { IssueForm } from "./form";
+export { default as IssueList } from "./list";
+export { Header as IssueHeader } from "./headers";
 
-export * from "./Detail";
-export * from "./List";
-export * from "./Modal";
-export default Issue;
+export {
+  Title as IssueTitle,
+  TitleLink as IssueTitleLink,
+  Creator as IssueCreator,
+  Description as IssueDescription,
+} from "./text";
+
+export * from "./buttons";
+export * from "./modals";

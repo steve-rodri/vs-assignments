@@ -1,0 +1,3 @@
+[submodule "level-6/rock-the-vote/packages/server"]
+	path = level-6/rock-the-vote/packages/server
+	url = git@github.com:steve-rodri/rock-the-vote-server.git

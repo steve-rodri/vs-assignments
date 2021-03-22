@@ -1,14 +1,15 @@
 import React from "react";
-import { Center, Flex, HStack, Heading } from "@chakra-ui/react";
-import { CreateIssueInModalButton } from "../issue/buttons";
+import { Center, Flex, Heading, Spacer, useColorMode } from "@chakra-ui/react";
+import { ColorModeButton } from "./buttons";
 import Link from "../Link";
 
 export const PageHeader = () => {
   return (
-    <Center py={[4, 8, 12, 16, 20]}>
-      <Flex w="full" maxW={1200}>
+    <Center pt={[4, 8, 12, 16]}>
+      <Flex w="full" maxW={1200} px={[4, 8, 12, 16]} align="center">
         <Headline />
-        <NavBar />
+        <Spacer />
+        <ToggleColorModeButton />
       </Flex>
     </Center>
   );
@@ -16,16 +17,15 @@ export const PageHeader = () => {
 
 const Headline = () => (
   <Link to="/">
-    <Heading size="xl">Rock the Vote</Heading>
+    <Heading fontSize={["4xl", "5xl", "6xl", "7xl"]} fontFamily="Lobster Two">
+      Rock the Vote
+    </Heading>
   </Link>
 );
 
-const NavBar = () => {
-  return (
-    <HStack spacing="10" ml="auto">
-      <CreateIssueInModalButton />
-    </HStack>
-  );
+const ToggleColorModeButton = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return <ColorModeButton onClick={toggleColorMode} mode={colorMode} />;
 };
 
 export default PageHeader;

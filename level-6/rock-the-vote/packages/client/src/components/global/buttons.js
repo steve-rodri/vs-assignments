@@ -54,7 +54,7 @@ export const UpvoteButton = ({ onClick, votes, highlight }) => (
   <Button
     onClick={onClick}
     variant={highlight ? "upvote" : null}
-    leftIcon={<TriangleUpIcon />}
+    leftIcon={<TriangleUpIcon color={!highlight && "green.700"} />}
   >
     <Text>{votes.up}</Text>
   </Button>
@@ -63,7 +63,7 @@ export const DownvoteButton = ({ onClick, votes, highlight }) => (
   <Button
     onClick={onClick}
     variant={highlight ? "downvote" : null}
-    leftIcon={<TriangleDownIcon />}
+    leftIcon={<TriangleDownIcon color={!highlight && "red.700"} />}
   >
     <Text>{votes.down}</Text>
   </Button>

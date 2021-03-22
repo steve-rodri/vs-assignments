@@ -11,9 +11,9 @@ import {
 import { DeleteButton } from "./buttons";
 
 export const Modal = ({ headerContent, children, ...rest }) => (
-  <ChakraModal {...rest} scrollBehavior="inside" size="xl" isCentered>
+  <ChakraModal {...rest} scrollBehavior="inside" size="lg" isCentered>
     <ModalOverlay />
-    <ModalContent pb={6}>
+    <ModalContent pb={6} m={3}>
       <ModalHeader pr={35}>{headerContent}</ModalHeader>
       <ModalCloseButton />
       <ModalBody>{children}</ModalBody>

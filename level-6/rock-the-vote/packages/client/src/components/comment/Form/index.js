@@ -26,7 +26,7 @@ export const CommentForm = ({ values, focusRef, issueId, closeModal }) => {
       onSubmit={onSubmit}
       validationSchema={schema}
     >
-      <VStack spacing={5} align="flex-start">
+      <VStack spacing={5} align="center">
         <Body focusRef={focusRef} />
         <SubmitButton />
       </VStack>

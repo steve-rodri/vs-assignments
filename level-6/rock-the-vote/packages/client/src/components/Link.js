@@ -1,10 +1,10 @@
 import { Link as NavLink } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
 
-export const Link = ({ children, ...rest }) => {
+export const Link = ({ children, variant, ...rest }) => {
   return (
     <NavLink {...rest}>
-      <Button variant="link" whiteSpace="wrap" textAlign="left">
+      <Button variant={variant || "link"} whiteSpace="wrap" textAlign="left">
         {children}
       </Button>
     </NavLink>

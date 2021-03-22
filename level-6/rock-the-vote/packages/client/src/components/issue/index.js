@@ -1,7 +1,7 @@
 export { default as Issue } from "./self";
 
 export { IssueForm } from "./form";
-export { default as IssueList } from "./list";
+export { default as IssueList } from "./List";
 export { Header as IssueHeader } from "./headers";
 
 export {

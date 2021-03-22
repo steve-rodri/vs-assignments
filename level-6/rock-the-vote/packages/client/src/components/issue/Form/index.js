@@ -34,7 +34,7 @@ export const IssueForm = ({ values, focusRef, closeModal }) => {
 
 const Fields = props => {
   return (
-    <VStack spacing={5} align="flex-start">
+    <VStack spacing={5} align="center">
       <Title {...props} />
       <Description />
       <SubmitButton />

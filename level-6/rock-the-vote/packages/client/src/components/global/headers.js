@@ -1,15 +1,23 @@
 import React from "react";
-import { Center, Flex, Heading, Spacer, useColorMode } from "@chakra-ui/react";
+import {
+  Center,
+  Flex,
+  HStack,
+  Heading,
+  Spacer,
+  useColorMode,
+} from "@chakra-ui/react";
+import { CreateIssueInModalButton } from "../issue";
 import { ColorModeButton } from "./buttons";
 import Link from "../Link";
 
 export const PageHeader = () => {
   return (
-    <Center pt={[4, 8, 12, 16]}>
-      <Flex w="full" maxW={1200} px={[4, 8, 12, 16]} align="center">
+    <Center py={[4, 8]}>
+      <Flex w="full" px={[4, 8, 12, 16]} maxW={1200} align="center">
         <Headline />
         <Spacer />
-        <ToggleColorModeButton />
+        <NavBar />
       </Flex>
     </Center>
   );
@@ -21,6 +29,13 @@ const Headline = () => (
       Rock the Vote
     </Heading>
   </Link>
+);
+
+const NavBar = () => (
+  <HStack>
+    <ToggleColorModeButton />
+    <CreateIssueInModalButton />
+  </HStack>
 );
 
 const ToggleColorModeButton = () => {

@@ -1,11 +1,12 @@
 import React from "react";
-import { Grid } from "@chakra-ui/react";
+import { Grid, Divider } from "@chakra-ui/react";
 import { PageHeader, IssueList } from "../components";
 
 const Issues = props => {
   return (
-    <Grid px={[5, 5, 50, 100]} pb={20}>
+    <Grid pb={20}>
       <PageHeader />
+      <Divider />
       <IssueList {...props} />
     </Grid>
   );

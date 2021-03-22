@@ -22,8 +22,8 @@ export const TitleLink = ({ title, _id }) => {
 
 export const Creator = ({ creator }) => {
   return (
-    <Link to={`/users/${creator._id}`}>
-      <Text variant="username">{`@${creator.username}`}</Text>
+    <Link to={`/users/${creator._id}`} variant="username">
+      <Text>{`@${creator.username}`}</Text>
     </Link>
   );
 };

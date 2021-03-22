@@ -13,7 +13,7 @@ export const Date = ({ date }) => {
 
 export const Creator = ({ creator }) => {
   return (
-    <Link to={`/users/${creator._id}`}>
+    <Link to={`/users/${creator._id}`} variant="username">
       <Text>{`@${creator.username}`}</Text>
     </Link>
   );

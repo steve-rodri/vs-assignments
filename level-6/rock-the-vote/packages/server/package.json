@@ -20,7 +20,6 @@
     "start": "nodemon --no-warnings index.js",
     "reset": "node --no-warnings ./database/reset.js",
     "debug": "nodemon --inspect index.js",
-    "heroku-postbuild": "npm run reset",
     "deploy": "zsh ./utils/deploy.zsh"
   }
 }

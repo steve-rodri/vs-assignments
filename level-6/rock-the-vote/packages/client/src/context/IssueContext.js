@@ -22,6 +22,12 @@ export const IssueProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const { token } = useContext(UserContext);
 
+  const find = async id => {
+    const inContext = issues.find(i => i._id === id);
+    if (inContext) return inContext;
+    const issue = await findIssue(id);
+    return issue;
+  };
   const create = async data => {
     const issue = await createIssue(data);
     setIssues(prev => [...prev, issue]);
@@ -34,13 +40,6 @@ export const IssueProvider = ({ children }) => {
   const update = async issue => {
     setIssues(prev => prev.map(i => (i._id === issue._id ? issue : i)));
     await updateIssue(issue);
-  };
-
-  const find = async id => {
-    const inContext = issues.find(i => i._id === id);
-    if (inContext) return inContext;
-    const issue = await findIssue(id);
-    return issue;
   };
 
   const addUpvote = async issue => {
